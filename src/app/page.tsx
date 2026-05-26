@@ -133,7 +133,7 @@ export default function Home() {
       <main className="flex flex-col items-center gap-20 md:gap-40 px-4 md:px-8 pb-0">
 
         {/* Hero */}
-        <section className="w-full max-w-[1200px] flex flex-col gap-8 md:gap-16 pt-12 md:pt-20">
+        <section className="w-full max-w-[1200px] flex flex-col gap-8 md:gap-16 pt-20 md:pt-36">
           <h1
             className="text-[clamp(2.5rem,5vw,3.75rem)] font-extrabold leading-[1.15]"
             style={{ fontFamily: "var(--font-bricolage)" }}
