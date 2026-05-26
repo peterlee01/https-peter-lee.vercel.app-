@@ -378,15 +378,11 @@ export default function HiringHall() {
             <a href="mailto:peterlee01@gmail.com"
               className="flex items-center gap-3 px-8 py-4 rounded-full text-white text-base font-medium hover:opacity-90 transition-opacity"
               style={{ fontFamily: "var(--font-jakarta)", background: "linear-gradient(90deg, #7c5cff 19.231%, #ff6b9a 57.212%, #ffb070 87.019%)" }}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={assets.emailIcon} alt="" className="h-7 w-auto" />
               peterlee01@gmail.com
             </a>
             <a href="https://www.linkedin.com/in/pldesigns/" target="_blank" rel="noopener noreferrer"
               className="flex items-center gap-3 px-8 py-4 rounded-full text-white text-base font-medium hover:opacity-90 transition-opacity"
               style={{ fontFamily: "var(--font-jakarta)", background: "linear-gradient(90deg, #4fc3ff, #7c5cff 73.792%)" }}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={assets.linkedin} alt="" className="h-9 w-9 object-cover" />
               LinkedIn
             </a>
           </div>
