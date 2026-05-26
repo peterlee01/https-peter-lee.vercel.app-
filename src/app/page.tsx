@@ -1,65 +1,476 @@
-import Image from "next/image";
+import Link from "next/link";
+import GradientBackground from "@/components/GradientBackground";
+import BackToTop from "@/components/BackToTop";
+import MobileNav from "@/components/MobileNav";
+
+// Asset URLs from Figma (valid for 7 days from 2026-05-25)
+const assets = {
+  hhCard: "https://www.figma.com/api/mcp/asset/4aa055b6-d31d-482f-a38f-cfbd4970a28a",
+  contentDialCard: "https://www.figma.com/api/mcp/asset/bc78f41b-d867-4b3d-8700-7a0a44dbcd5b",
+  pricelineCard: "https://www.figma.com/api/mcp/asset/fae5c757-1a14-41c6-a1b2-09ab901af33f",
+  verizon: "/logos/verizon.png",
+  kargo: "/logos/kargo.png",
+  citibank: "/logos/citibank.png",
+  priceline: "/logos/priceline.png",
+  triplelift: "/logos/triplelift.png",
+  headshot: "https://www.figma.com/api/mcp/asset/606c0921-bcb1-44ff-84c3-53f39f13b308",
+  linkedin: "https://www.figma.com/api/mcp/asset/f9f3b3da-1db9-4787-bbab-18613b7e81e7",
+  emailIcon: "https://www.figma.com/api/mcp/asset/ffba2791-d274-44b0-a97e-383292eebac5",
+  arrow: "https://www.figma.com/api/mcp/asset/b9469221-47aa-4454-8853-23b387545e7f",
+};
+
+const warmGradient = "linear-gradient(90deg, #7c5cff 19.231%, #ff6b9a 57.212%, #ffb070 87.019%)";
+
+function SectionLabel({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="flex items-center gap-6">
+      <div className="h-px w-8" style={{ background: warmGradient }} />
+      <span
+        className="text-[#7c5cff] text-sm tracking-[2px] whitespace-nowrap"
+        style={{ fontFamily: "var(--font-jetbrains)", fontWeight: 600 }}
+      >
+        {children}
+      </span>
+      <div className="h-px w-8" style={{ background: warmGradient }} />
+    </div>
+  );
+}
+
+function SectionLabelLeft({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="flex items-center gap-4">
+      <div className="h-px w-8" style={{ background: warmGradient }} />
+      <span
+        className="text-[#7c5cff] text-sm tracking-[2px] whitespace-nowrap"
+        style={{ fontFamily: "var(--font-jetbrains)", fontWeight: 500 }}
+      >
+        {children}
+      </span>
+    </div>
+  );
+}
+
+function ViewCaseStudyButton({ href }: { href?: string }) {
+  const className = "flex items-center justify-center gap-2 border-2 border-[#7c5cff] text-[#7c5cff] text-base md:text-xl font-medium hover:bg-[#7c5cff] hover:text-white transition-colors duration-200 cursor-pointer shrink-0 w-full md:w-[320px]";
+  const style = { fontFamily: "var(--font-jakarta)", height: 56, borderRadius: 50 };
+  const inner = (
+    <>
+      View Case Study
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src={assets.arrow} alt="" style={{ width: 28, height: 15 }} />
+    </>
+  );
+  return href
+    ? <Link href={href} className={className} style={style}>{inner}</Link>
+    : <button className={className} style={style}>{inner}</button>;
+}
+
+const pillStyles = {
+  gray:       { background: "#ffffff", border: "1px solid #e0d4ff", color: "#4a2ea8" },
+  "pink-blue":   { background: "linear-gradient(90deg, #ffe4f0, #ddf4ff)", border: "none", color: "#7c3a6b" },
+  "blue-purple": { background: "linear-gradient(90deg, #ddf4ff, #ede4ff)", border: "none", color: "#2e5d8a" },
+};
+
+function CapabilityPill({ label, variant = "gray" }: { label: string; variant?: keyof typeof pillStyles }) {
+  const s = pillStyles[variant];
+  return (
+    <div
+      className="rounded-full px-6 py-3 text-base font-medium whitespace-nowrap"
+      style={{ fontFamily: "var(--font-jakarta)", background: s.background, border: s.border, color: s.color }}
+    >
+      {label}
+    </div>
+  );
+}
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+    <div className="relative" style={{ overflowX: "clip" }}>
+      <GradientBackground />
+
+      {/* Navigation */}
+      <nav className="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-100">
+        <div className="max-w-[1440px] mx-auto px-6 md:px-8 py-4 flex items-center justify-between relative">
+          <a href="#" className="py-2">
+            <span
+              className="text-2xl font-extrabold text-[#010101]"
+              style={{ fontFamily: "var(--font-bricolage)" }}
+            >
+              Peter{" "}
+            </span>
+            <span
+              className="text-2xl font-extrabold gradient-warm"
+              style={{ fontFamily: "var(--font-bricolage)" }}
+            >
+              Lee
+            </span>
+          </a>
+          {/* Desktop nav */}
+          <div className="hidden md:flex items-center gap-2">
+            {["Work", "About", "Philosophy"].map((link) => (
+              <a
+                key={link}
+                href={`#${link.toLowerCase()}`}
+                className="px-4 py-3 text-[#6b7280] text-base tracking-wide hover:text-[#010101] transition-colors"
+                style={{ fontFamily: "var(--font-jakarta)", fontWeight: 500 }}
+              >
+                {link}
+              </a>
+            ))}
+            <a
+              href="#contact"
+              className="ml-2 px-6 py-3 bg-black text-white rounded-full text-base tracking-wide hover:bg-[#7c5cff] transition-colors"
+              style={{ fontFamily: "var(--font-jakarta)", fontWeight: 600 }}
+            >
+              Contact
+            </a>
+          </div>
+          {/* Mobile hamburger */}
+          <MobileNav />
+        </div>
+      </nav>
+
+      <main className="flex flex-col items-center gap-20 md:gap-40 px-4 md:px-8 pb-0">
+
+        {/* Hero */}
+        <section className="w-full max-w-[1200px] flex flex-col gap-8 md:gap-16 pt-12 md:pt-20">
+          <h1
+            className="text-[clamp(2.5rem,5vw,3.75rem)] font-extrabold leading-[1.15]"
+            style={{ fontFamily: "var(--font-bricolage)" }}
+          >
+            Hi, I&apos;m a{" "}
+            <span className="gradient-warm">Director, Product Design</span>
+            {" "}- I have 20 years experience driving business results by shaping product strategy, leading high-performing design teams, and solving complex challenges at the intersection of user needs and organizational goals.
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+
+          <div className="flex flex-wrap gap-3 md:gap-4">
+            {[
+              { label: "Design Leadership", cls: "gradient-warm" },
+              { label: "AI UX", cls: "gradient-cool" },
+              { label: "Strategy", cls: "gradient-warm" },
+              { label: "Business Impact", cls: "gradient-warm" },
+            ].map(({ label, cls }) => (
+              <div
+                key={label}
+                className="border border-[#d8d8d8] rounded-full px-6 md:px-10 py-3 md:py-5 flex items-center justify-center bg-white"
+              >
+                <span
+                  className={`text-lg md:text-2xl font-semibold ${cls}`}
+                  style={{ fontFamily: "var(--font-bricolage)" }}
+                >
+                  {label}
+                </span>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Featured Work */}
+        <section id="work" className="w-full max-w-[1200px] flex flex-col gap-8 md:gap-16">
+          <div className="flex justify-center">
+            <SectionLabel>FEATURED WORK</SectionLabel>
+          </div>
+
+          {/* Card 1 — Hiring Hall */}
+          <div
+            className="w-full rounded-[24px] md:rounded-[33px] px-5 py-8 md:px-12 md:py-16 flex flex-wrap gap-6 md:gap-8 items-center"
+            style={{
+              background: "linear-gradient(119deg, #f8feff 44.85%, #f2e0f8 97.74%)",
+              boxShadow: "0 0 35px rgba(63,0,141,0.16)",
+            }}
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            <div className="w-full md:flex-1 md:min-w-[280px] md:max-w-[480px] h-[260px] md:h-[480px] relative rounded-[20px] md:rounded-[33px] overflow-hidden">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={assets.hhCard} alt="Hiring Hall app" className="absolute inset-0 w-full h-full object-cover" />
+            </div>
+            <div className="flex-1 min-w-[260px] max-w-[600px] flex flex-col gap-4 md:gap-5">
+              <span className="text-[#7c5cff] text-sm md:text-base tracking-widest px-2" style={{ fontFamily: "var(--font-jetbrains)", fontWeight: 500 }}>
+                B2C CONTECH APP
+              </span>
+              <h2
+                className="text-[clamp(1.5rem,3.5vw,2.9rem)] font-bold leading-[1.1] px-2 text-[#010101]"
+                style={{ fontFamily: "var(--font-bricolage)" }}
+              >
+                Networking and hiring platform for commercial construction
+              </h2>
+              <p className="text-[#6b7280] text-lg md:text-2xl px-2" style={{ fontFamily: "var(--font-jakarta)" }}>
+                Hiring Hall | Founder
+              </p>
+              <div className="h-2 md:h-4" />
+              <div className="flex items-end justify-between">
+                <div className="flex flex-col items-center gap-1 pl-2">
+                  <span className="text-[3rem] md:text-[4.5rem] font-bold leading-none gradient-warm" style={{ fontFamily: "var(--font-bricolage)" }}>24%</span>
+                  <span className="text-[#6b7280] text-base md:text-lg" style={{ fontFamily: "var(--font-jakarta)" }}>Adoption rate</span>
+                </div>
+                <div className="flex flex-col items-end gap-1 pr-2">
+                  <span className="text-[3rem] md:text-[4.5rem] font-bold leading-none gradient-cool" style={{ fontFamily: "var(--font-bricolage)" }}>5%</span>
+                  <span className="text-[#6b7280] text-base md:text-lg" style={{ fontFamily: "var(--font-jakarta)" }}>MoM revenue</span>
+                </div>
+              </div>
+              <div className="mt-3 md:mt-4">
+                <ViewCaseStudyButton href="/hiring-hall" />
+              </div>
+            </div>
+          </div>
+
+          {/* Card 2 — ContentDial */}
+          <div
+            className="w-full rounded-[24px] md:rounded-[33px] px-5 py-8 md:px-12 md:py-16 flex flex-wrap gap-6 md:gap-8 items-center"
+            style={{
+              background: "linear-gradient(120deg, #f8feff 44.85%, #f2e0f8 97.74%)",
+              boxShadow: "0 0 35px rgba(63,0,141,0.16)",
+            }}
           >
-            Documentation
-          </a>
-        </div>
+            <div className="flex-1 min-w-[260px] max-w-[600px] flex flex-col gap-4">
+              <span className="text-[#7c5cff] text-sm md:text-base tracking-widest px-2" style={{ fontFamily: "var(--font-jetbrains)", fontWeight: 500 }}>
+                AI-POWERED SAAS PRODUCT
+              </span>
+              <h2
+                className="text-[clamp(1.5rem,3.5vw,2.8rem)] font-bold leading-[1.1] px-2 text-[#010101]"
+                style={{ fontFamily: "var(--font-bricolage)" }}
+              >
+                Built 0-1 AI-Powered Branded Content Intelligence System
+              </h2>
+              <p className="text-[#6b7280] text-lg md:text-2xl px-2" style={{ fontFamily: "var(--font-jakarta)" }}>
+                ContentDial | Lead Product Designer
+              </p>
+              <div className="h-2 md:h-4" />
+              <div className="flex items-end justify-between">
+                <div className="flex flex-col items-center gap-1 pl-2">
+                  <span className="text-[3rem] md:text-[4.5rem] font-bold leading-none gradient-warm" style={{ fontFamily: "var(--font-bricolage)" }}>15%</span>
+                  <span className="text-[#6b7280] text-base md:text-lg text-center" style={{ fontFamily: "var(--font-jakarta)" }}>Campaign ROI<br />Improvement</span>
+                </div>
+                <div className="flex flex-col items-end gap-1 pr-2">
+                  <span className="text-[3rem] md:text-[4.5rem] font-bold leading-none gradient-cool" style={{ fontFamily: "var(--font-bricolage)" }}>27%</span>
+                  <span className="text-[#6b7280] text-base md:text-lg text-right" style={{ fontFamily: "var(--font-jakarta)" }}>Reduced<br />Wasted Spend</span>
+                </div>
+              </div>
+              <div className="hidden md:block mt-4">
+                <ViewCaseStudyButton href="/contentdial" />
+              </div>
+            </div>
+            <div className="w-full md:flex-1 md:min-w-[280px] md:max-w-[500px] h-[260px] md:h-[480px] relative rounded-[20px] md:rounded-[33px] overflow-hidden border-2 border-[#aadedb]">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={assets.contentDialCard} alt="ContentDial dashboard" className="absolute inset-0 w-full h-full object-cover" />
+            </div>
+            <div className="w-full md:hidden">
+              <ViewCaseStudyButton href="/contentdial" />
+            </div>
+          </div>
+
+          {/* Card 3 — Priceline */}
+          <div
+            className="w-full rounded-[24px] md:rounded-[33px] px-5 py-8 md:px-12 md:py-16 flex flex-wrap gap-6 md:gap-8 items-center"
+            style={{
+              background: "linear-gradient(120deg, #f8feff 44.85%, #f2e0f8 97.74%)",
+              boxShadow: "0 0 35px rgba(63,0,141,0.16)",
+            }}
+          >
+            <div className="w-full md:flex-1 md:min-w-[280px] md:max-w-[500px] h-[260px] md:h-[480px] relative rounded-[20px] md:rounded-[33px] overflow-hidden">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={assets.pricelineCard} alt="Priceline redesign" className="absolute inset-0 w-full h-full object-cover" />
+            </div>
+            <div className="flex-1 min-w-[260px] max-w-[600px] flex flex-col gap-4">
+              <span className="text-[#7c5cff] text-sm md:text-base tracking-widest px-2" style={{ fontFamily: "var(--font-jetbrains)", fontWeight: 500 }}>
+                B2C E-COMMERCE
+              </span>
+              <h2
+                className="text-[clamp(1.5rem,3.5vw,2.8rem)] font-bold leading-[1.1] px-2 text-[#010101]"
+                style={{ fontFamily: "var(--font-bricolage)" }}
+              >
+                Redesign desktop and mobile web and e-commerce products
+              </h2>
+              <p className="text-[#6b7280] text-lg md:text-2xl px-2" style={{ fontFamily: "var(--font-jakarta)" }}>
+                Priceline | UX/UI Creative Director
+              </p>
+              <div className="h-2 md:h-4" />
+              <div className="flex items-end justify-between">
+                <div className="flex flex-col items-center gap-1 pl-2">
+                  <span className="text-[3rem] md:text-[4.5rem] font-bold leading-none gradient-cool" style={{ fontFamily: "var(--font-bricolage)" }}>4.9%</span>
+                  <span className="text-[#6b7280] text-base md:text-lg" style={{ fontFamily: "var(--font-jakarta)" }}>Conversion Increase</span>
+                </div>
+                <div className="flex flex-col items-end gap-1 pr-2">
+                  <span className="text-[3rem] md:text-[4.5rem] font-bold leading-none gradient-warm" style={{ fontFamily: "var(--font-bricolage)" }}>6pt</span>
+                  <span className="text-[#6b7280] text-base md:text-lg text-right" style={{ fontFamily: "var(--font-jakarta)" }}>Lift In Customer<br />Satisfaction</span>
+                </div>
+              </div>
+              <div className="mt-3 md:mt-4">
+                <ViewCaseStudyButton href="/priceline" />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Logo strip */}
+        <section className="w-full max-w-[1200px] flex flex-col gap-8 md:gap-10">
+          <div className="h-px w-full bg-[#e5e7eb]" />
+          <div className="grid grid-cols-3 md:flex md:justify-between items-center w-full gap-y-8 gap-x-6 md:gap-0">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={assets.verizon} alt="Verizon" className="h-6 md:h-8 object-contain justify-self-center" style={{ mixBlendMode: "multiply" }} />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={assets.kargo} alt="Kargo" className="h-8 md:h-10 object-contain justify-self-center" style={{ mixBlendMode: "multiply" }} />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={assets.citibank} alt="Citibank" className="h-7 md:h-9 object-contain justify-self-center" style={{ mixBlendMode: "multiply" }} />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={assets.priceline} alt="Priceline" className="h-8 md:h-10 object-contain justify-self-center col-start-1 md:col-auto" style={{ mixBlendMode: "multiply" }} />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={assets.triplelift} alt="TripleLift" className="h-6 md:h-8 object-contain justify-self-center col-start-3 md:col-auto" style={{ mixBlendMode: "multiply" }} />
+          </div>
+          <div className="h-px w-full bg-[#e5e7eb]" />
+        </section>
+
+        {/* About Me */}
+        <section id="about" className="w-full max-w-[1200px] flex flex-col gap-6 md:gap-8">
+          <SectionLabelLeft>ABOUT ME</SectionLabelLeft>
+          <div className="h-4" />
+
+          <h2
+            className="text-[clamp(2.5rem,5vw,3.75rem)] font-extrabold leading-[1.2]"
+            style={{ fontFamily: "var(--font-bricolage)" }}
+          >
+            I&apos;m a hands-on, strategic design thinker helping organizations deliver experiences that{" "}
+            <span className="gradient-warm-reverse">
+              drive revenue, improve growth, and create lasting customer value.
+            </span>
+          </h2>
+
+          <div className="flex flex-wrap gap-8 md:gap-16 items-center justify-between mt-2 md:mt-4">
+            <p
+              className="flex-1 min-w-[260px] max-w-[680px] text-[#4a5266] text-base md:text-lg leading-7"
+              style={{ fontFamily: "var(--font-jakarta)" }}
+            >
+              My work spans complex environments, including AI-driven products, B2B & B2C platforms,
+              SaaS, and multi-product ecosystems across mobile and web. I design products, systems,
+              and user-centered experiences that compound value beyond a single launch. I ensure
+              design drives business success while empowering teams to solve meaningful problems at scale.
+            </p>
+            <div className="relative w-48 h-48 md:w-64 md:h-64 rounded-full overflow-hidden shrink-0 mx-auto md:mx-0">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={assets.headshot} alt="Peter Lee" className="absolute inset-0 w-full h-full object-cover" />
+            </div>
+          </div>
+
+          {/* Core capabilities */}
+          <div className="flex flex-col gap-4 mt-4 max-w-[700px]">
+            <span
+              className="text-[#a3a3a3] text-base tracking-widest px-2"
+              style={{ fontFamily: "var(--font-jetbrains)", fontWeight: 500 }}
+            >
+              CORE CAPABILITIES
+            </span>
+            <div className="flex flex-wrap gap-3">
+              {[
+                { label: "Product Design",            variant: "pink-blue"   },
+                { label: "AI Product Strategy",       variant: "blue-purple" },
+                { label: "Generative AI UX",          variant: "blue-purple" },
+                { label: "Design Leadership",         variant: "pink-blue"   },
+                { label: "Agentic Experience Design", variant: "gray"        },
+                { label: "UX Research",               variant: "gray"        },
+                { label: "Design Thinking",           variant: "pink-blue"   },
+                { label: "User-centered Design",      variant: "blue-purple" },
+                { label: "Systems Thinking",          variant: "gray"        },
+                { label: "Interaction Design",        variant: "blue-purple" },
+                { label: "UI Design",                 variant: "pink-blue"   },
+                { label: "A/B Testing",               variant: "gray"        },
+                { label: "Rapid Prototyping",         variant: "blue-purple" },
+                { label: "Usability Testing",         variant: "pink-blue"   },
+              ].map(({ label, variant }) => (
+                <CapabilityPill key={label} label={label} variant={variant as "gray" | "pink-blue" | "blue-purple"} />
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Design Philosophy */}
+        <section id="philosophy" className="w-full max-w-[1200px] flex flex-col gap-8 md:gap-14 pb-16 md:pb-32">
+          <div className="flex justify-center">
+            <SectionLabel>DESIGN PHILOSOPHY</SectionLabel>
+          </div>
+
+          <div className="flex flex-col gap-10 items-center">
+            <h2
+              className="text-[clamp(2.5rem,5vw,3.75rem)] font-extrabold leading-[1.2] text-center"
+              style={{ fontFamily: "var(--font-bricolage)" }}
+            >
+              I believe great design is measured by the{" "}
+              <span className="gradient-warm">value it drives for users and the business,</span>{" "}
+              <span className="gradient-warm">not outputs.</span>
+            </h2>
+
+            <div
+              className="max-w-[900px] text-[#4a5266] text-lg leading-7 tracking-wide space-y-5 w-full"
+              style={{ fontFamily: "var(--font-jakarta)" }}
+            >
+              <p>
+                Design, at its best, is a business decision. I work at the intersection of product
+                vision and organizational influence — identifying where the market is going, making
+                hard prioritization calls, and ensuring the team has the clarity and confidence to execute.
+              </p>
+              <p>
+                Building great design orgs is the job. I hire for judgment, not just craft. I develop
+                leaders who can hold their own in any room — with engineers, executives, or customers —
+                and I build cultures where critical thinking and data-informed decision-making are the
+                norm, not the exception.
+              </p>
+              <p>
+                The work only matters if it moves the needle. I partner closely with product, engineering,
+                and executive leadership to make sure design isn&apos;t just at the table — it&apos;s
+                shaping the direction. Success is defined by outcomes: what shipped, how it performed,
+                and the measurable impact it created for the users and business.
+              </p>
+            </div>
+          </div>
+        </section>
       </main>
+
+      {/* Contact footer */}
+      <footer id="contact" className="bg-black w-full flex justify-center px-4 md:px-8 mt-12 md:mt-24">
+        <div className="w-full max-w-[1200px] py-12 md:py-20 flex flex-col gap-8 md:gap-16">
+          <div className="flex items-center gap-4">
+            <div className="h-px w-8" style={{ background: warmGradient }} />
+            <span
+              className="text-[#f0f0f0] text-sm tracking-[2px]"
+              style={{ fontFamily: "var(--font-jetbrains)", fontWeight: 700 }}
+            >
+              CONTACT
+            </span>
+          </div>
+
+          <h2
+            className="text-white text-[clamp(2.5rem,5vw,3.75rem)] font-extrabold leading-[1.2] max-w-[680px]"
+            style={{ fontFamily: "var(--font-bricolage)" }}
+          >
+            Let&apos;s build something great together.
+          </h2>
+
+          <div className="flex flex-wrap gap-4 items-center">
+            <a
+              href="mailto:peterlee01@gmail.com"
+              className="flex items-center gap-3 px-6 md:px-8 py-3 md:py-4 rounded-full text-white text-sm md:text-base font-medium hover:opacity-90 transition-opacity"
+              style={{
+                fontFamily: "var(--font-jakarta)",
+                background: "linear-gradient(90deg, #7c5cff 19.231%, #ff6b9a 57.212%, #ffb070 87.019%)",
+              }}
+            >
+              peterlee01@gmail.com
+            </a>
+
+            <a
+              href="https://linkedin.com/in/peterlee"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-3 px-6 md:px-8 py-3 md:py-4 rounded-full text-white text-sm md:text-base font-medium hover:opacity-90 transition-opacity"
+              style={{
+                fontFamily: "var(--font-jakarta)",
+                background: "linear-gradient(90deg, #4fc3ff, #7c5cff 73.792%)",
+              }}
+            >
+              LinkedIn
+            </a>
+          </div>
+        </div>
+      </footer>
+      <BackToTop />
     </div>
   );
 }
