@@ -409,7 +409,7 @@ export default function Priceline() {
               style={{ fontFamily: "var(--font-jakarta)", background: "linear-gradient(90deg, #7c5cff 19.231%, #ff6b9a 57.212%, #ffb070 87.019%)" }}>
               peterlee01@gmail.com
             </a>
-            <a href="https://linkedin.com/in/peterlee" target="_blank" rel="noopener noreferrer"
+            <a href="https://www.linkedin.com/in/pldesigns/" target="_blank" rel="noopener noreferrer"
               className="flex items-center gap-3 px-8 py-4 rounded-full text-white text-base font-medium hover:opacity-90 transition-opacity"
               style={{ fontFamily: "var(--font-jakarta)", background: "linear-gradient(90deg, #4fc3ff, #7c5cff 73.792%)" }}>
               LinkedIn

@@ -456,7 +456,7 @@ export default function Home() {
             </a>
 
             <a
-              href="https://linkedin.com/in/peterlee"
+              href="https://www.linkedin.com/in/pldesigns/"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-3 px-6 md:px-8 py-3 md:py-4 rounded-full text-white text-sm md:text-base font-medium hover:opacity-90 transition-opacity"
