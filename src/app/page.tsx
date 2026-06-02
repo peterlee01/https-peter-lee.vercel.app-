@@ -16,7 +16,7 @@ const assets = {
   headshot: "https://www.figma.com/api/mcp/asset/606c0921-bcb1-44ff-84c3-53f39f13b308",
   linkedin: "https://www.figma.com/api/mcp/asset/f9f3b3da-1db9-4787-bbab-18613b7e81e7",
   emailIcon: "https://www.figma.com/api/mcp/asset/ffba2791-d274-44b0-a97e-383292eebac5",
-  arrow: "https://www.figma.com/api/mcp/asset/b9469221-47aa-4454-8853-23b387545e7f",
+
 };
 
 const warmGradient = "linear-gradient(90deg, #7c5cff 19.231%, #ff6b9a 57.212%, #ffb070 87.019%)";
@@ -56,8 +56,9 @@ function ViewCaseStudyButton({ href }: { href?: string }) {
   const inner = (
     <>
       View Case Study
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src={assets.arrow} alt="" style={{ width: 28, height: 15 }} />
+      <svg width="28" height="15" viewBox="0 0 28 15" fill="none" aria-hidden="true">
+        <path d="M0 7.5H26M26 7.5L20 1M26 7.5L20 14" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+      </svg>
     </>
   );
   return href
@@ -138,16 +139,16 @@ export default function Home() {
             className="text-[clamp(2.5rem,5vw,3.75rem)] font-extrabold leading-[1.15]"
             style={{ fontFamily: "var(--font-bricolage)" }}
           >
-            Hi, I&apos;m a{" "}
-            <span className="gradient-warm">Director, Product Design</span>
+            Hi, I&apos;m an{" "}
+            <span className="gradient-warm">Agentic AI Design Lead</span>
             {" "}- I have 20 years experience driving business results by shaping product strategy, leading high-performing design teams, and solving complex challenges at the intersection of user needs and organizational goals.
           </h1>
 
           <div className="flex flex-wrap gap-3 md:gap-4">
             {[
-              { label: "Design Leadership", cls: "gradient-warm" },
-              { label: "AI UX", cls: "gradient-cool" },
-              { label: "Strategy", cls: "gradient-warm" },
+              { label: "Agentic AI Design", cls: "gradient-warm" },
+              { label: "Product Design", cls: "gradient-cool" },
+              { label: "Product Strategy", cls: "gradient-warm" },
               { label: "Business Impact", cls: "gradient-warm" },
             ].map(({ label, cls }) => (
               <div
@@ -179,7 +180,7 @@ export default function Home() {
               boxShadow: "0 0 35px rgba(63,0,141,0.16)",
             }}
           >
-            <div className="w-full md:flex-1 md:min-w-[280px] md:max-w-[480px] h-[260px] md:h-[480px] relative rounded-[20px] md:rounded-[33px] overflow-hidden">
+            <div className="w-full md:flex-1 md:min-w-[280px] md:max-w-[480px] h-[260px] md:h-[480px] relative rounded-[10px] md:rounded-[33px] overflow-hidden">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={assets.hhCard} alt="Hiring Hall app" className="absolute inset-0 w-full h-full object-cover" />
             </div>
@@ -249,7 +250,7 @@ export default function Home() {
                 <ViewCaseStudyButton href="/contentdial" />
               </div>
             </div>
-            <div className="w-full md:flex-1 md:min-w-[280px] md:max-w-[500px] h-[260px] md:h-[480px] relative rounded-[20px] md:rounded-[33px] overflow-hidden border-2 border-[#aadedb]">
+            <div className="w-full md:flex-1 md:min-w-[280px] md:max-w-[500px] h-[260px] md:h-[480px] relative rounded-[10px] md:rounded-[33px] overflow-hidden border-2 border-[#aadedb]">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={assets.contentDialCard} alt="ContentDial dashboard" className="absolute inset-0 w-full h-full object-cover" />
             </div>
@@ -266,7 +267,7 @@ export default function Home() {
               boxShadow: "0 0 35px rgba(63,0,141,0.16)",
             }}
           >
-            <div className="w-full md:flex-1 md:min-w-[280px] md:max-w-[500px] h-[260px] md:h-[480px] relative rounded-[20px] md:rounded-[33px] overflow-hidden">
+            <div className="w-full md:flex-1 md:min-w-[280px] md:max-w-[500px] h-[260px] md:h-[480px] relative rounded-[10px] md:rounded-[33px] overflow-hidden">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={assets.pricelineCard} alt="Priceline redesign" className="absolute inset-0 w-full h-full object-cover" />
             </div>
@@ -304,17 +305,17 @@ export default function Home() {
         {/* Logo strip */}
         <section className="w-full max-w-[1200px] flex flex-col gap-8 md:gap-10">
           <div className="h-px w-full bg-[#e5e7eb]" />
-          <div className="grid grid-cols-3 md:flex md:justify-between items-center w-full gap-y-8 gap-x-6 md:gap-0">
+          <div className="flex flex-col md:flex md:flex-row md:justify-between items-center w-full gap-8 md:gap-0">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={assets.verizon} alt="Verizon" className="h-6 md:h-8 object-contain justify-self-center" style={{ mixBlendMode: "multiply" }} />
+            <img src={assets.verizon} alt="Verizon" className="h-6 md:h-8 object-contain" style={{ mixBlendMode: "multiply" }} />
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={assets.kargo} alt="Kargo" className="h-8 md:h-10 object-contain justify-self-center" style={{ mixBlendMode: "multiply" }} />
+            <img src={assets.kargo} alt="Kargo" className="h-8 md:h-10 object-contain" style={{ mixBlendMode: "multiply" }} />
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={assets.citibank} alt="Citibank" className="h-7 md:h-9 object-contain justify-self-center" style={{ mixBlendMode: "multiply" }} />
+            <img src={assets.citibank} alt="Citibank" className="h-7 md:h-9 object-contain" style={{ mixBlendMode: "multiply" }} />
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={assets.priceline} alt="Priceline" className="h-8 md:h-10 object-contain justify-self-center col-start-1 md:col-auto" style={{ mixBlendMode: "multiply" }} />
+            <img src={assets.priceline} alt="Priceline" className="h-8 md:h-10 object-contain" style={{ mixBlendMode: "multiply" }} />
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={assets.triplelift} alt="TripleLift" className="h-6 md:h-8 object-contain justify-self-center col-start-3 md:col-auto" style={{ mixBlendMode: "multiply" }} />
+            <img src={assets.triplelift} alt="TripleLift" className="h-6 md:h-8 object-contain" style={{ mixBlendMode: "multiply" }} />
           </div>
           <div className="h-px w-full bg-[#e5e7eb]" />
         </section>
