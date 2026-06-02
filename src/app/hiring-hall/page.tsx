@@ -1,6 +1,7 @@
 import Link from "next/link";
 import GradientBackground from "@/components/GradientBackground";
 import BackToTop from "@/components/BackToTop";
+import MobileNav from "@/components/MobileNav";
 
 const assets = {
   heroImage: "https://www.figma.com/api/mcp/asset/195a5af3-dcb9-4f56-922f-ef0b76c00f48",
@@ -15,12 +16,12 @@ const assets = {
 function Nav() {
   return (
     <nav className="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-100">
-      <div className="max-w-[1440px] mx-auto px-8 py-4 flex items-center justify-between">
+      <div className="max-w-[1440px] mx-auto px-8 py-4 flex items-center justify-between relative">
         <Link href="/" className="py-4">
           <span className="text-2xl font-extrabold text-[#010101]" style={{ fontFamily: "var(--font-bricolage)" }}>Peter </span>
           <span className="text-2xl font-extrabold gradient-warm" style={{ fontFamily: "var(--font-bricolage)" }}>Lee</span>
         </Link>
-        <div className="flex items-center gap-2">
+        <div className="hidden md:flex items-center gap-2">
           {["Work", "About", "Philosophy"].map((link) => (
             <Link key={link} href={`/#${link.toLowerCase()}`}
               className="px-4 py-3 text-[#6b7280] text-base tracking-wide hover:text-[#010101] transition-colors"
@@ -34,6 +35,7 @@ function Nav() {
             Contact
           </Link>
         </div>
+        <MobileNav />
       </div>
     </nav>
   );
@@ -124,7 +126,7 @@ export default function HiringHall() {
 
         {/* Hero image */}
         <section className="w-full max-w-[1200px] pt-16 flex flex-col gap-16">
-          <div className="w-full aspect-[1200/835] rounded-[30px] overflow-hidden">
+          <div className="w-full aspect-[1200/835] rounded-[10px] md:rounded-[30px] overflow-hidden">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={assets.heroImage} alt="Hiring Hall app" className="w-full h-full object-cover" />
           </div>
@@ -263,7 +265,7 @@ export default function HiringHall() {
               Majority of tradesmen and companies use mobile devices for finding jobs or workers.
             </InsightCard>
           </div>
-          <div className="w-full aspect-[1200/829] rounded-[30px] overflow-hidden">
+          <div className="w-full aspect-[1200/829] rounded-[10px] md:rounded-[30px] overflow-hidden">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={assets.heroImage1} alt="Research insights" className="w-full h-full object-cover" />
           </div>
@@ -287,7 +289,7 @@ export default function HiringHall() {
             <NumberedItem n="03">Built scheduling around project-based, non-linear work patterns — real-time availability, not static calendar slots</NumberedItem>
             <NumberedItem n="04">Invested in community features — connections, endorsements, reputation — that compound in value as the platform grows</NumberedItem>
           </div>
-          <div className="w-full aspect-[1200/671] rounded-[30px] overflow-hidden">
+          <div className="w-full aspect-[1200/671] rounded-[10px] md:rounded-[30px] overflow-hidden">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={assets.heroImage2} alt="Strategy screens" className="w-full h-full object-cover" />
           </div>
@@ -315,12 +317,45 @@ export default function HiringHall() {
             <SolutionCard title="Job Discovery Feed" accent="Merit-based access" accentColor="#4fc3ff"
               bullets={["Personalized feed matched by trade, location, and availability", "Replaces word-of-mouth with a transparent, skills-first system"]} />
           </div>
-          <div className="w-full aspect-[1200/829] rounded-[30px] overflow-hidden"
+          {/* Clickable Prototype */}
+          <div className="w-full flex flex-col items-center gap-4">
+            <p className="text-sm tracking-[2px] text-[#a3a3a3] uppercase" style={{ fontFamily: "var(--font-jetbrains)", fontWeight: 500 }}>
+              Interactive Prototype
+            </p>
+            <div
+              style={{
+                width: 380,
+                height: 730,
+                borderRadius: 46,
+                overflow: "hidden",
+                boxShadow: "0 30px 80px rgba(0,0,0,0.45)",
+                flexShrink: 0,
+                background: "#111",
+              }}
+            >
+              <iframe
+                src="/prototype/index.html"
+                title="Hiring Hall Clickable Prototype"
+                style={{
+                  width: 380,
+                  height: 730,
+                  border: "none",
+                  display: "block",
+                }}
+                scrolling="no"
+              />
+            </div>
+            <p className="text-sm text-[#6b7280] text-center max-w-[340px]" style={{ fontFamily: "var(--font-jakarta)" }}>
+              Tap through 60 screens — full registration, job feed, chat, apply flow &amp; more
+            </p>
+          </div>
+
+          <div className="w-full aspect-[1200/829] rounded-[10px] md:rounded-[30px] overflow-hidden"
             style={{ boxShadow: "0 0 40px rgba(0,0,0,0.15)" }}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={assets.heroImage3} alt="Key solution screens" className="w-full h-full object-cover" />
           </div>
-          <div className="w-full rounded-[30px] overflow-hidden">
+          <div className="w-full rounded-[10px] md:rounded-[30px] overflow-hidden">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={assets.heroImage4} alt="Full product screens" className="w-full h-auto" />
           </div>
