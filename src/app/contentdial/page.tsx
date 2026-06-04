@@ -1,6 +1,7 @@
 import Link from "next/link";
 import GradientBackground from "@/components/GradientBackground";
 import BackToTop from "@/components/BackToTop";
+import MobileNav from "@/components/MobileNav";
 
 const imgHero       = "https://www.figma.com/api/mcp/asset/ca90cad3-ba62-4dc4-b950-c7435029a7dc";
 const imgResearch   = "https://www.figma.com/api/mcp/asset/89a93c66-e5b2-4783-9d75-83ec6b12dd21";
@@ -13,12 +14,12 @@ const imgScreen4    = "https://www.figma.com/api/mcp/asset/94d47bff-9d7b-495b-88
 function Nav() {
   return (
     <nav className="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-100">
-      <div className="max-w-[1440px] mx-auto px-8 py-4 flex items-center justify-between">
+      <div className="max-w-[1440px] mx-auto px-8 py-4 flex items-center justify-between relative">
         <Link href="/" className="py-4">
           <span className="text-2xl font-extrabold text-[#010101]" style={{ fontFamily: "var(--font-bricolage)" }}>Peter </span>
           <span className="text-2xl font-extrabold gradient-warm" style={{ fontFamily: "var(--font-bricolage)" }}>Lee</span>
         </Link>
-        <div className="flex items-center gap-2">
+        <div className="hidden md:flex items-center gap-2">
           {["Work", "About", "Philosophy"].map((link) => (
             <Link key={link} href={`/#${link.toLowerCase()}`}
               className="px-4 py-3 text-[#6b7280] text-base tracking-wide hover:text-[#010101] transition-colors"
@@ -32,6 +33,7 @@ function Nav() {
             Contact
           </Link>
         </div>
+        <MobileNav />
       </div>
     </nav>
   );
@@ -107,16 +109,16 @@ export default function ContentDial() {
         {/* Hero */}
         <section className="w-full max-w-[1200px] flex flex-col gap-16">
           {/* Hero image */}
-          <div className="w-full rounded-[30px] overflow-hidden" style={{ background: "linear-gradient(90deg, #4fc3ff, #7c5cff 73.792%)", aspectRatio: "1200/835" }}>
+          <div className="w-full rounded-[10px] md:rounded-[30px] overflow-hidden" style={{ background: "linear-gradient(90deg, #4fc3ff, #7c5cff 73.792%)", aspectRatio: "1200/835" }}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={imgHero} alt="ContentDial hero" className="w-full h-full object-cover rounded-[30px]" />
+            <img src={imgHero} alt="ContentDial hero" className="w-full h-full object-cover rounded-[10px] md:rounded-[30px]" />
           </div>
 
           {/* Eyebrow + headline */}
           <div className="flex flex-col gap-7">
             <span className="text-[#7c5cff] text-lg tracking-[2px]"
               style={{ fontFamily: "var(--font-jetbrains)", fontWeight: 500 }}>
-              CASE STUDY / HIRING HALL - B2C CONTECH APP
+              AI - POWERED SAAS PRODUCT
             </span>
             <h1 className="text-[clamp(2.5rem,5vw,3.75rem)] font-extrabold leading-[1.15]"
               style={{ fontFamily: "var(--font-bricolage)" }}>
@@ -226,7 +228,7 @@ export default function ContentDial() {
             </InsightCard>
           </div>
           {/* Research image */}
-          <div className="w-full rounded-[30px] overflow-hidden" style={{ aspectRatio: "1175/701" }}>
+          <div className="w-full rounded-[10px] md:rounded-[30px] overflow-hidden" style={{ aspectRatio: "1175/701" }}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={imgResearch} alt="Research findings" className="w-full h-full object-cover" />
           </div>
@@ -283,19 +285,19 @@ export default function ContentDial() {
           </div>
           {/* Screen shots */}
           <div className="flex flex-col gap-8">
-            <div className="w-full rounded-[30px] overflow-hidden" style={{ aspectRatio: "1200/886", boxShadow: "0 0 30px rgba(0,0,0,0.25)" }}>
+            <div className="w-full rounded-[10px] md:rounded-[30px] overflow-hidden" style={{ aspectRatio: "1200/886", boxShadow: "0 0 30px rgba(0,0,0,0.25)" }}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={imgScreen1} alt="ContentDial screen 1" className="w-full h-full object-cover" />
             </div>
-            <div className="w-full rounded-[30px] overflow-hidden" style={{ aspectRatio: "1200/895", boxShadow: "0 0 30px rgba(0,0,0,0.25)" }}>
+            <div className="w-full rounded-[10px] md:rounded-[30px] overflow-hidden" style={{ aspectRatio: "1200/895", boxShadow: "0 0 30px rgba(0,0,0,0.25)" }}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={imgScreen2} alt="ContentDial screen 2" className="w-full h-full object-cover" />
             </div>
-            <div className="w-full rounded-[30px] overflow-hidden" style={{ aspectRatio: "1200/1434", boxShadow: "0 0 30px rgba(0,0,0,0.25)" }}>
+            <div className="w-full rounded-[10px] md:rounded-[30px] overflow-hidden" style={{ aspectRatio: "1200/1434", boxShadow: "0 0 30px rgba(0,0,0,0.25)" }}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={imgScreen3} alt="ContentDial screen 3" className="w-full h-full object-cover" />
             </div>
-            <div className="w-full rounded-[30px] overflow-hidden" style={{ aspectRatio: "1200/1434", boxShadow: "0 0 30px rgba(0,0,0,0.25)" }}>
+            <div className="w-full rounded-[10px] md:rounded-[30px] overflow-hidden" style={{ aspectRatio: "1200/1434", boxShadow: "0 0 30px rgba(0,0,0,0.25)" }}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={imgScreen4} alt="ContentDial screen 4" className="w-full h-full object-cover" />
             </div>
