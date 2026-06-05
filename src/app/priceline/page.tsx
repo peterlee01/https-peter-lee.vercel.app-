@@ -1,6 +1,7 @@
 import Link from "next/link";
 import GradientBackground from "@/components/GradientBackground";
 import BackToTop from "@/components/BackToTop";
+import MobileNav from "@/components/MobileNav";
 
 const imgHero     = "https://www.figma.com/api/mcp/asset/c6a17736-ccc0-4f98-9275-bdb573e317d9";
 const imgStrategy = "https://www.figma.com/api/mcp/asset/a79a2037-0f9b-41e9-a155-3fbcd74758eb";
@@ -12,12 +13,12 @@ const imgScreen4  = "https://www.figma.com/api/mcp/asset/fb227db8-de2e-4ae2-b708
 function Nav() {
   return (
     <nav className="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-100">
-      <div className="max-w-[1440px] mx-auto px-8 py-4 flex items-center justify-between">
+      <div className="max-w-[1440px] mx-auto px-8 py-4 flex items-center justify-between relative">
         <Link href="/" className="py-4">
           <span className="text-2xl font-extrabold text-[#010101]" style={{ fontFamily: "var(--font-bricolage)" }}>Peter </span>
           <span className="text-2xl font-extrabold gradient-warm" style={{ fontFamily: "var(--font-bricolage)" }}>Lee</span>
         </Link>
-        <div className="flex items-center gap-2">
+        <div className="hidden md:flex items-center gap-2">
           {["Work", "About", "Philosophy"].map((link) => (
             <Link key={link} href={`/#${link.toLowerCase()}`}
               className="px-4 py-3 text-[#6b7280] text-base tracking-wide hover:text-[#010101] transition-colors"
@@ -31,6 +32,7 @@ function Nav() {
             Contact
           </Link>
         </div>
+        <MobileNav />
       </div>
     </nav>
   );
@@ -120,7 +122,7 @@ export default function Priceline() {
         {/* Hero */}
         <section className="w-full max-w-[1200px] flex flex-col gap-16">
           {/* Hero image */}
-          <div className="w-full rounded-[30px] overflow-hidden" style={{ aspectRatio: "1200/2364" }}>
+          <div className="w-full rounded-[10px] md:rounded-[30px] overflow-hidden" style={{ aspectRatio: "1200/2364" }}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={imgHero} alt="Priceline redesign" className="w-full h-full object-cover" />
           </div>
@@ -172,7 +174,7 @@ export default function Priceline() {
             <div className="flex-1 min-w-[240px] max-w-[320px] px-6 pb-6 flex flex-col gap-1">
               <span className="text-xl font-bold text-[#010101]" style={{ fontFamily: "var(--font-jakarta)" }}>TIMELINE</span>
               <ul className="list-disc pl-5 text-xl text-[#6a6a6a] space-y-0" style={{ fontFamily: "var(--font-jakarta)" }}>
-                <li>Overall: 7 months</li>
+                <li>Overall: 10 months</li>
                 <li>{`Discovery & Research: 7+ weeks`}</li>
                 <li>{`Design & testing: 23 weeks`}</li>
               </ul>
@@ -364,13 +366,13 @@ export default function Priceline() {
           {/* Screen shots — natural height, no clipping */}
           <div className="flex flex-col gap-8">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={imgScreen1} alt="Priceline screen 1" className="w-full h-auto block rounded-[30px]" style={{ boxShadow: "0 0 30px rgba(0,0,0,0.25)" }} />
+            <img src={imgScreen1} alt="Priceline screen 1" className="w-full h-auto block rounded-[10px] md:rounded-[30px]" style={{ boxShadow: "0 0 30px rgba(0,0,0,0.25)" }} />
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={imgScreen2} alt="Priceline screen 2" className="w-full h-auto block rounded-[30px]" style={{ boxShadow: "0 0 30px rgba(0,0,0,0.25)" }} />
+            <img src={imgScreen2} alt="Priceline screen 2" className="w-full h-auto block rounded-[10px] md:rounded-[30px]" style={{ boxShadow: "0 0 30px rgba(0,0,0,0.25)" }} />
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={imgScreen3} alt="Priceline screen 3" className="w-full h-auto block rounded-[30px]" style={{ boxShadow: "0 0 30px rgba(0,0,0,0.25)" }} />
+            <img src={imgScreen3} alt="Priceline screen 3" className="w-full h-auto block rounded-[10px] md:rounded-[30px]" style={{ boxShadow: "0 0 30px rgba(0,0,0,0.25)" }} />
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={imgScreen4} alt="Priceline screen 4" className="w-full h-auto block rounded-[30px]" style={{ boxShadow: "0 0 30px rgba(0,0,0,0.25)" }} />
+            <img src={imgScreen4} alt="Priceline screen 4" className="w-full h-auto block rounded-[10px] md:rounded-[30px]" style={{ boxShadow: "0 0 30px rgba(0,0,0,0.25)" }} />
           </div>
         </section>
 
