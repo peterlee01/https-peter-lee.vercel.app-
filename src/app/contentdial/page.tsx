@@ -3,13 +3,13 @@ import GradientBackground from "@/components/GradientBackground";
 import BackToTop from "@/components/BackToTop";
 import MobileNav from "@/components/MobileNav";
 
-const imgHero       = "https://www.figma.com/api/mcp/asset/ca90cad3-ba62-4dc4-b950-c7435029a7dc";
-const imgResearch   = "https://www.figma.com/api/mcp/asset/89a93c66-e5b2-4783-9d75-83ec6b12dd21";
-const imgStrategy   = "https://www.figma.com/api/mcp/asset/4a7c4fde-569b-4c14-84ae-e14a6551f84a";
-const imgScreen1    = "https://www.figma.com/api/mcp/asset/692e6d1e-8f1d-442f-8189-6751adee4dc5";
-const imgScreen2    = "https://www.figma.com/api/mcp/asset/26eccbde-f08e-4c90-8a16-dc652c8e9080";
-const imgScreen3    = "https://www.figma.com/api/mcp/asset/c9f1c90c-a91a-413f-a9a6-418badba23f4";
-const imgScreen4    = "https://www.figma.com/api/mcp/asset/94d47bff-9d7b-495b-886d-a10338ee210f";
+const imgHero     = "/images/cd-hero.png";
+const imgResearch = "/images/cd-research.png";
+const imgStrategy = "/images/cd-strategy.png";
+const imgScreen1  = "/images/cd-screen1.png";
+const imgScreen2  = "/images/cd-screen2.png";
+const imgScreen3  = "/images/cd-screen3.png";
+const imgScreen4  = "/images/cd-screen4.png";
 
 function Nav() {
   return (

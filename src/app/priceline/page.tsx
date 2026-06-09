@@ -3,12 +3,12 @@ import GradientBackground from "@/components/GradientBackground";
 import BackToTop from "@/components/BackToTop";
 import MobileNav from "@/components/MobileNav";
 
-const imgHero     = "https://www.figma.com/api/mcp/asset/c6a17736-ccc0-4f98-9275-bdb573e317d9";
-const imgStrategy = "https://www.figma.com/api/mcp/asset/a79a2037-0f9b-41e9-a155-3fbcd74758eb";
-const imgScreen1  = "https://www.figma.com/api/mcp/asset/fcdd0829-807d-4f68-bd34-7d442b79aad0";
-const imgScreen2  = "https://www.figma.com/api/mcp/asset/672c30ab-bb23-48b3-b987-451f71768a67";
-const imgScreen3  = "https://www.figma.com/api/mcp/asset/e3002e28-00ba-4169-812e-f36f195dca6d";
-const imgScreen4  = "https://www.figma.com/api/mcp/asset/fb227db8-de2e-4ae2-b708-51d8f5d8904f";
+const imgHero     = "/images/pl-hero.png";
+const imgStrategy = "/images/pl-strategy.png";
+const imgScreen1  = "/images/pl-screen1.png";
+const imgScreen2  = "/images/pl-screen2.png";
+const imgScreen3  = "/images/pl-screen3.png";
+const imgScreen4  = "/images/pl-screen4.png";
 
 function Nav() {
   return (

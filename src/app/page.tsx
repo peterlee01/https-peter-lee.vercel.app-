@@ -3,20 +3,16 @@ import GradientBackground from "@/components/GradientBackground";
 import BackToTop from "@/components/BackToTop";
 import MobileNav from "@/components/MobileNav";
 
-// Asset URLs from Figma (valid for 7 days from 2026-05-25)
 const assets = {
-  hhCard: "https://www.figma.com/api/mcp/asset/4aa055b6-d31d-482f-a38f-cfbd4970a28a",
-  contentDialCard: "https://www.figma.com/api/mcp/asset/bc78f41b-d867-4b3d-8700-7a0a44dbcd5b",
-  pricelineCard: "https://www.figma.com/api/mcp/asset/fae5c757-1a14-41c6-a1b2-09ab901af33f",
+  hhCard: "/images/hh-card.png",
+  contentDialCard: "/images/contentdial-card.png",
+  pricelineCard: "/images/priceline-card.png",
   verizon: "/logos/verizon.png",
   kargo: "/logos/kargo.png",
   citibank: "/logos/citibank.png",
   priceline: "/logos/priceline.png",
   triplelift: "/logos/triplelift.png",
-  headshot: "https://www.figma.com/api/mcp/asset/606c0921-bcb1-44ff-84c3-53f39f13b308",
-  linkedin: "https://www.figma.com/api/mcp/asset/f9f3b3da-1db9-4787-bbab-18613b7e81e7",
-  emailIcon: "https://www.figma.com/api/mcp/asset/ffba2791-d274-44b0-a97e-383292eebac5",
-
+  headshot: "/images/headshot.png",
 };
 
 const warmGradient = "linear-gradient(90deg, #7c5cff 19.231%, #ff6b9a 57.212%, #ffb070 87.019%)";

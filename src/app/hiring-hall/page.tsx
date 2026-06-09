@@ -4,13 +4,11 @@ import BackToTop from "@/components/BackToTop";
 import MobileNav from "@/components/MobileNav";
 
 const assets = {
-  heroImage: "https://www.figma.com/api/mcp/asset/195a5af3-dcb9-4f56-922f-ef0b76c00f48",
-  heroImage1: "https://www.figma.com/api/mcp/asset/53b4d238-7782-461d-a22e-dc016faaa45b",
-  heroImage2: "https://www.figma.com/api/mcp/asset/fde7b806-143a-4636-ab11-2fbb874a64af",
-  heroImage3: "https://www.figma.com/api/mcp/asset/bb3ec885-e595-41ce-b671-641602de8d46",
-  heroImage4: "https://www.figma.com/api/mcp/asset/84827032-8740-4bf7-9610-100c941a1a0f",
-  emailIcon: "https://www.figma.com/api/mcp/asset/af474133-b385-4a9e-bffd-397b88d36393",
-  linkedin: "https://www.figma.com/api/mcp/asset/29c93f3c-4422-42d5-a569-5cf5ff368866",
+  heroImage: "/images/hh-hero.png",
+  heroImage1: "/images/hh-research.png",
+  heroImage2: "/images/hh-strategy.png",
+  heroImage3: "/images/hh-solutions.png",
+  heroImage4: "/images/hh-screens.png",
 };
 
 function Nav() {
