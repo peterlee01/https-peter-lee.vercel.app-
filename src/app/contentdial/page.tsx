@@ -282,14 +282,22 @@ export default function ContentDial() {
           </div>
           {/* Screen shots */}
           <div className="flex flex-col gap-8">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={imgScreen1} alt="ContentDial screen 1" className="w-full h-auto block" style={{ filter: "drop-shadow(0 0 24px rgba(0,0,0,0.22))" }} />
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={imgScreen2} alt="ContentDial screen 2" className="w-full h-auto block" style={{ filter: "drop-shadow(0 0 24px rgba(0,0,0,0.22))" }} />
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={imgScreen3} alt="ContentDial screen 3" className="w-full h-auto block" style={{ filter: "drop-shadow(0 0 24px rgba(0,0,0,0.22))" }} />
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={imgScreen4} alt="ContentDial screen 4" className="w-full h-auto block" style={{ filter: "drop-shadow(0 0 24px rgba(0,0,0,0.22))" }} />
+            <div className="w-full rounded-[30px] overflow-hidden" style={{ boxShadow: "0 0 30px rgba(0,0,0,0.25)" }}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={imgScreen1} alt="ContentDial screen 1" className="w-full h-auto block" />
+            </div>
+            <div className="w-full rounded-[30px] overflow-hidden" style={{ boxShadow: "0 0 30px rgba(0,0,0,0.25)" }}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={imgScreen2} alt="ContentDial screen 2" className="w-full h-auto block" />
+            </div>
+            <div className="w-full rounded-[30px] overflow-hidden" style={{ boxShadow: "0 0 30px rgba(0,0,0,0.25)" }}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={imgScreen3} alt="ContentDial screen 3" className="w-full h-auto block" />
+            </div>
+            <div className="w-full rounded-[30px] overflow-hidden" style={{ boxShadow: "0 0 30px rgba(0,0,0,0.25)" }}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={imgScreen4} alt="ContentDial screen 4" className="w-full h-auto block" />
+            </div>
           </div>
         </section>
 
