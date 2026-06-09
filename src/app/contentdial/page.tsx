@@ -252,9 +252,6 @@ export default function ContentDial() {
             <NumberedItem n="03">Enable real-time optimization, not post-campaign reporting</NumberedItem>
             <NumberedItem n="04">Reduce friction between advertisers and publishers</NumberedItem>
           </div>
-          {/* Strategy image */}
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={imgStrategy} alt="Strategy diagram" className="w-full h-auto block rounded-[20px] border border-[#a3a3a3]" />
           {/* AI Strategy diagram */}
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={imgAiStrategy} alt="AI strategy diagram" className="w-full h-auto block rounded-[20px]" style={{ boxShadow: "0 0 30px rgba(0,0,0,0.12)" }} />
