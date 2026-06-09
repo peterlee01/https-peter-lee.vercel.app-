@@ -349,7 +349,7 @@ export default function HiringHall() {
           </div>
 
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={assets.heroImage3} alt="Key solution screens" className="w-full h-auto block rounded-[10px] md:rounded-[30px]" style={{ boxShadow: "0 0 40px rgba(0,0,0,0.15)" }} />
+          <img src={assets.heroImage3} alt="Key solution screens" className="w-full h-auto block" style={{ filter: "drop-shadow(0 0 30px rgba(0,0,0,0.18))" }} />
           <div className="w-full rounded-[10px] md:rounded-[30px] overflow-hidden">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={assets.heroImage4} alt="Full product screens" className="w-full h-auto" />
