@@ -33,7 +33,7 @@ export default function MobileNav() {
             {links.map((link) => (
               <a
                 key={link}
-                href={`#${link.toLowerCase()}`}
+                href={`/#${link.toLowerCase()}`}
                 onClick={() => setOpen(false)}
                 className="px-4 py-3 text-[#6b7280] text-base hover:text-[#010101] transition-colors rounded-lg"
                 style={{ fontFamily: "var(--font-jakarta)", fontWeight: 500 }}
