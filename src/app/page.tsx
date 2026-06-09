@@ -246,7 +246,7 @@ export default function Home() {
                 <ViewCaseStudyButton href="/contentdial" />
               </div>
             </div>
-            <div className="w-full md:flex-1 md:min-w-[280px] md:max-w-[500px] h-[260px] md:h-[480px] relative rounded-[10px] md:rounded-[33px] overflow-hidden border-2 border-[#aadedb]">
+            <div className="w-full md:flex-1 md:min-w-[280px] md:max-w-[500px] h-[260px] md:h-[480px] relative rounded-[10px] md:rounded-[33px] overflow-hidden">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={assets.contentDialCard} alt="ContentDial dashboard" className="absolute inset-0 w-full h-full object-cover" />
             </div>
