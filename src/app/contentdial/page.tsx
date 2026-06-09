@@ -3,13 +3,14 @@ import GradientBackground from "@/components/GradientBackground";
 import BackToTop from "@/components/BackToTop";
 import MobileNav from "@/components/MobileNav";
 
-const imgHero     = "/images/cd-hero.png";
-const imgResearch = "/images/cd-research.png";
-const imgStrategy = "/images/cd-strategy.png";
-const imgScreen1  = "/images/cd-screen1.png";
-const imgScreen2  = "/images/cd-screen2.png";
-const imgScreen3  = "/images/cd-screen3.png";
-const imgScreen4  = "/images/cd-screen4.png";
+const imgHero       = "/images/cd-hero.png";
+const imgResearch   = "/images/cd-research.png";
+const imgStrategy   = "/images/cd-strategy.png";
+const imgAiStrategy = "/images/cd-ai-strategy.png";
+const imgScreen1    = "/images/cd-screen1.png";
+const imgScreen2    = "/images/cd-screen2.png";
+const imgScreen3    = "/images/cd-screen3.png";
+const imgScreen4    = "/images/cd-screen4.png";
 
 function Nav() {
   return (
@@ -254,6 +255,9 @@ export default function ContentDial() {
           {/* Strategy image */}
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={imgStrategy} alt="Strategy diagram" className="w-full h-auto block rounded-[20px] border border-[#a3a3a3]" />
+          {/* AI Strategy diagram */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={imgAiStrategy} alt="AI strategy diagram" className="w-full h-auto block rounded-[20px]" style={{ boxShadow: "0 0 30px rgba(0,0,0,0.12)" }} />
         </section>
 
         {/* Key Solutions */}
