@@ -363,16 +363,24 @@ export default function Priceline() {
                 "Drove Hotels conversion from baseline to 2.9% through research-led iteration",
               ]} />
           </div>
-          {/* Screen shots — natural height, no clipping */}
+          {/* Screen shots */}
           <div className="flex flex-col gap-8">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={imgScreen1} alt="Priceline screen 1" className="w-full h-auto block rounded-[10px] md:rounded-[30px]" style={{ boxShadow: "0 0 30px rgba(0,0,0,0.25)" }} />
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={imgScreen2} alt="Priceline screen 2" className="w-full h-auto block rounded-[10px] md:rounded-[30px]" style={{ boxShadow: "0 0 30px rgba(0,0,0,0.25)" }} />
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={imgScreen3} alt="Priceline screen 3" className="w-full h-auto block rounded-[10px] md:rounded-[30px]" style={{ boxShadow: "0 0 30px rgba(0,0,0,0.25)" }} />
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={imgScreen4} alt="Priceline screen 4" className="w-full h-auto block rounded-[10px] md:rounded-[30px]" style={{ boxShadow: "0 0 30px rgba(0,0,0,0.25)" }} />
+            <div className="w-full rounded-[10px] md:rounded-[30px] overflow-hidden" style={{ boxShadow: "0 0 30px rgba(0,0,0,0.25)" }}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={imgScreen1} alt="Priceline screen 1" className="w-full h-auto block" />
+            </div>
+            <div className="w-full rounded-[10px] md:rounded-[30px] overflow-hidden" style={{ boxShadow: "0 0 30px rgba(0,0,0,0.25)" }}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={imgScreen2} alt="Priceline screen 2" className="w-full h-auto block" />
+            </div>
+            <div className="w-full rounded-[10px] md:rounded-[30px] overflow-hidden" style={{ boxShadow: "0 0 30px rgba(0,0,0,0.25)" }}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={imgScreen3} alt="Priceline screen 3" className="w-full h-auto block" />
+            </div>
+            <div className="w-full rounded-[10px] md:rounded-[30px] overflow-hidden" style={{ boxShadow: "0 0 30px rgba(0,0,0,0.25)" }}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={imgScreen4} alt="Priceline screen 4" className="w-full h-auto block" />
+            </div>
           </div>
         </section>
 
