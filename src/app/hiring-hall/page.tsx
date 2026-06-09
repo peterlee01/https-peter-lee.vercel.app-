@@ -348,11 +348,8 @@ export default function HiringHall() {
             </p>
           </div>
 
-          <div className="w-full aspect-[1200/829] rounded-[10px] md:rounded-[30px] overflow-hidden"
-            style={{ boxShadow: "0 0 40px rgba(0,0,0,0.15)" }}>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={assets.heroImage3} alt="Key solution screens" className="w-full h-full object-cover" />
-          </div>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={assets.heroImage3} alt="Key solution screens" className="w-full h-auto block rounded-[10px] md:rounded-[30px]" style={{ boxShadow: "0 0 40px rgba(0,0,0,0.15)" }} />
           <div className="w-full rounded-[10px] md:rounded-[30px] overflow-hidden">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={assets.heroImage4} alt="Full product screens" className="w-full h-auto" />
