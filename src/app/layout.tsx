@@ -23,7 +23,7 @@ const jetbrains = JetBrains_Mono({
 export const metadata: Metadata = {
   title: "Peter Lee — Director, Product Design",
   description:
-    "20 years of experience driving business results by shaping product strategy, leading high-performing design teams, and solving complex challenges.",
+    "Driving business results by shaping product strategy, leading high-performing design teams, and solving complex challenges.",
 };
 
 export default function RootLayout({

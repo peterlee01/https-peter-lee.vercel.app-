@@ -137,7 +137,7 @@ export default function Home() {
           >
             Hi, I&apos;m an{" "}
             <span className="gradient-warm">Agentic AI Design Lead</span>
-            {" "}- I have 20 years experience driving business results by shaping product strategy, leading high-performing design teams, and solving complex challenges at the intersection of user needs and organizational goals.
+            {" "}- I drive business results by shaping product strategy, leading high-performing design teams, and solving complex challenges at the intersection of user needs and organizational goals.
           </h1>
 
           <div className="flex flex-wrap gap-3 md:gap-4">
