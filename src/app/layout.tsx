@@ -21,9 +21,9 @@ const jetbrains = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Peter Lee — Director, Product Design",
+  title: "Peter Lee, Staff Product Designer & AI Design Leader",
   description:
-    "Driving business results by shaping product strategy, leading high-performing design teams, and solving complex challenges.",
+    "I turn ambiguous business problems into clear product strategy, scalable systems, and AI-powered experiences that create measurable impact.",
 };
 
 export default function RootLayout({

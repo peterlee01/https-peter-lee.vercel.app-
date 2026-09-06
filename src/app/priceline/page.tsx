@@ -19,11 +19,15 @@ function Nav() {
           <span className="text-2xl font-extrabold gradient-warm" style={{ fontFamily: "var(--font-bricolage)" }}>Lee</span>
         </Link>
         <div className="hidden md:flex items-center gap-2">
-          {["Work", "About", "Philosophy"].map((link) => (
-            <Link key={link} href={`/#${link.toLowerCase()}`}
+          {[
+            { label: "Work", id: "work" },
+            { label: "About", id: "about" },
+            { label: "How I Operate", id: "how-i-operate" },
+          ].map(({ label, id }) => (
+            <Link key={id} href={`/#${id}`}
               className="px-4 py-3 text-[#6b7280] text-base tracking-wide hover:text-[#010101] transition-colors"
               style={{ fontFamily: "var(--font-jakarta)", fontWeight: 500 }}>
-              {link}
+              {label}
             </Link>
           ))}
           <Link href="/#contact"
@@ -109,29 +113,28 @@ export default function Priceline() {
       <Nav />
 
       <main className="flex flex-col items-center gap-36 px-8 pb-0">
-        <div className="w-full max-w-[1200px] pt-10">
-          <Link href="/#work" className="inline-flex items-center gap-2 text-[#6b7280] text-base hover:text-[#7c5cff] transition-colors group"
-            style={{ fontFamily: "var(--font-jakarta)", fontWeight: 500 }}>
-            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true" className="transition-transform group-hover:-translate-x-1 duration-200">
-              <path d="M11 14L6 9L11 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-            Back to Work
-          </Link>
-        </div>
-
         {/* Hero */}
-        <section className="w-full max-w-[1200px] flex flex-col gap-16">
-          {/* Hero image */}
-          <div className="w-full rounded-[10px] md:rounded-[30px] overflow-hidden" style={{ aspectRatio: "1200/2364" }}>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={imgHero} alt="Priceline redesign" className="w-full h-full object-cover" />
+        <section className="w-full max-w-[1200px] pt-10 flex flex-col gap-16">
+          <div className="flex flex-col gap-[70px]">
+            <Link href="/#work" className="inline-flex items-center gap-2 text-[#6b7280] text-base hover:text-[#7c5cff] transition-colors group"
+              style={{ fontFamily: "var(--font-jakarta)", fontWeight: 500 }}>
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true" className="transition-transform group-hover:-translate-x-1 duration-200">
+                <path d="M11 14L6 9L11 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+              Back to Work
+            </Link>
+            {/* Hero image */}
+            <div className="w-full rounded-[10px] md:rounded-[30px] overflow-hidden" style={{ aspectRatio: "1200/2364" }}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={imgHero} alt="Priceline redesign" className="w-full h-full object-cover" />
+            </div>
           </div>
 
           {/* Eyebrow + headline */}
           <div className="flex flex-col gap-7">
             <span className="text-[#7c5cff] text-lg tracking-[2px]"
               style={{ fontFamily: "var(--font-jetbrains)", fontWeight: 500 }}>
-              CASE STUDY / B2C ECOMMERCE
+              CASE STUDY / PRICELINE · B2C · GROWTH · CONVERSION · SCALE
             </span>
             <h1 className="text-[clamp(2.5rem,5vw,3.75rem)] font-extrabold leading-[1.15]"
               style={{ fontFamily: "var(--font-bricolage)" }}>
@@ -147,10 +150,10 @@ export default function Priceline() {
 
           {/* Impact stat cards */}
           <div className="flex flex-wrap gap-4">
-            <StatCard value="4.9%" label="Conversion lift" gradient="gradient-warm" />
-            <StatCard value="NPS 41" label="User satisfaction" gradient="gradient-cool" />
-            <StatCard value="VIP" label="Loyalty Concept still live today" gradient="gradient-warm-reverse" />
-            <StatCard value="+2.9%" label="Conversion lift" gradient="gradient-cool" />
+            <StatCard value="+2.9 pts" label="Checkout conversion (2% → 4.9%)" gradient="gradient-warm" />
+            <StatCard value="NPS 41" label="+6 post-redesign" gradient="gradient-cool" />
+            <StatCard value="+20 pts" label="Authenticated sessions via VIP sign-in" gradient="gradient-warm-reverse" />
+            <StatCard value="VIP" label="Loyalty concept still live in production" gradient="gradient-cool" />
           </div>
 
           {/* Project details */}
@@ -193,15 +196,15 @@ export default function Priceline() {
           <div className="flex flex-col gap-6">
             <NumberedItem n="01">
               <span className="font-extrabold text-[#6a6a6a]" style={{ fontFamily: "var(--font-jakarta)" }}>Dated look &amp; feel</span>
-              {` - Priceline's UI hadn't kept pace with modern travel platforms—visual inconsistency across pages fractured the experience and eroded user confidence`}
+              {` - Priceline's UI hadn't kept pace with modern travel platforms, visual inconsistency across pages fractured the experience and eroded user confidence`}
             </NumberedItem>
             <NumberedItem n="02">
               <span className="font-extrabold text-[#6a6a6a]" style={{ fontFamily: "var(--font-jakarta)" }}>Confusing deal structure</span>
-              {` - Express Deals, NYOP, Hot Rates, and Tonight Only Deals created decision paralysis—users couldn't identify which deal gave the best price`}
+              {` - Express Deals, NYOP, Hot Rates, and Tonight Only Deals created decision paralysis: users couldn't identify which deal gave the best price`}
             </NumberedItem>
             <NumberedItem n="03">
               <span className="font-extrabold text-[#6a6a6a]" style={{ fontFamily: "var(--font-jakarta)" }}>Suboptimal conversion &amp; NPS</span>
-              {` - Checkout was the highest abandonment stage—a fragmented, high-friction flow that no landing-page polish could compensate for`}
+              {` - Checkout was the highest abandonment stage: a fragmented, high-friction flow that no landing-page polish could compensate for`}
             </NumberedItem>
           </div>
           <p className="text-[#7c5cff] text-2xl font-bold max-w-[780px] leading-normal"
@@ -221,11 +224,11 @@ export default function Priceline() {
           <div className="flex flex-col gap-6">
             <NumberedItem n="01">
               <span className="font-extrabold text-[#6a6a6a]" style={{ fontFamily: "var(--font-jakarta)" }}>Creative Direction</span>
-              {` - Owned all design decisions across desktop—set the visual and interaction direction for the entire platform redesign`}
+              {` - Owned all design decisions across desktop: set the visual and interaction direction for the entire platform redesign`}
             </NumberedItem>
             <NumberedItem n="02">
               <span className="font-extrabold text-[#6a6a6a]" style={{ fontFamily: "var(--font-jakarta)" }}>Design System</span>
-              {` - Built the unified component library—type, color, spacing, and patterns used across every redesigned surface to enforce consistency at scale`}
+              {` - Built the unified component library: type, color, spacing, and patterns used across every redesigned surface to enforce consistency at scale`}
             </NumberedItem>
             <NumberedItem n="03">
               <span className="font-extrabold text-[#6a6a6a]" style={{ fontFamily: "var(--font-jakarta)" }}>UX Research</span>
@@ -233,11 +236,11 @@ export default function Priceline() {
             </NumberedItem>
             <NumberedItem n="04">
               <span className="font-extrabold text-[#6a6a6a]" style={{ fontFamily: "var(--font-jakarta)" }}>A/B Testing</span>
-              {` - Led research and design partnership on Hotels conversion—driving the baseline from 2% to a 4.9% rate through funnel optimization`}
+              {` - Led research and design partnership on Hotels conversion, driving the baseline from 2% to a 4.9% rate through funnel optimization`}
             </NumberedItem>
             <NumberedItem n="05">
               <span className="font-extrabold text-[#6a6a6a]" style={{ fontFamily: "var(--font-jakarta)" }}>VIP Loyalty</span>
-              {` - Led design workshops with Product and Engineering on a loyalty sign-in concept—still live in production today, driving account creation`}
+              {` - Led design workshops with Product and Engineering on a loyalty sign-in concept, still live in production today, driving account creation`}
             </NumberedItem>
           </div>
         </section>
@@ -270,7 +273,7 @@ export default function Priceline() {
             {/* Insight card 2 */}
             <div className="bg-white border border-[#d4d4d4] rounded-[20px] flex-1 min-w-[220px] max-w-[286px] p-6 flex flex-col gap-3"
               style={{ boxShadow: "0 0 20px rgba(0,0,0,0.04)" }}>
-              <p className="text-[#010101] text-2xl font-bold" style={{ fontFamily: "var(--font-bricolage)" }}>{`Best Price — That's What Users Cared About`}</p>
+              <p className="text-[#010101] text-2xl font-bold" style={{ fontFamily: "var(--font-bricolage)" }}>{`Best Price: That's What Users Cared About`}</p>
               <span className="text-lg font-extrabold text-[#ff6b9a]" style={{ fontFamily: "var(--font-jetbrains)" }}>INSIGHT #2</span>
               <p className="text-[#6b7280] text-lg leading-7 flex-1"
                 style={{ fontFamily: "var(--font-jakarta)", fontWeight: 500 }}>
@@ -284,7 +287,7 @@ export default function Priceline() {
               <span className="text-lg font-extrabold text-[#7c5cff]" style={{ fontFamily: "var(--font-jetbrains)" }}>INSIGHT #3</span>
               <p className="text-[#6b7280] text-lg leading-7 flex-1"
                 style={{ fontFamily: "var(--font-jakarta)", fontWeight: 500 }}>
-                {`Frequent customers wanted to be rewarded for their loyalty. They needed a compelling sign-in benefit — beyond just "My Trips."`}
+                {`Frequent customers wanted to be rewarded for their loyalty. They needed a compelling sign-in benefit, beyond just "My Trips."`}
               </p>
             </div>
           </div>
@@ -313,7 +316,7 @@ export default function Priceline() {
             </NumberedItem>
             <NumberedItem n="04">
               <span className="font-extrabold text-[#6a6a6a]" style={{ fontFamily: "var(--font-jakarta)" }}>Measure</span>
-              {` - Define success metrics upfront—conversion rate, NPS, and design consistency - and validate every decision against those targets before shipping`}
+              {` - Define success metrics upfront: conversion rate, NPS, and design consistency, and validate every decision against those targets before shipping`}
             </NumberedItem>
           </div>
           {/* Strategy diagram */}
@@ -321,6 +324,38 @@ export default function Priceline() {
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={imgStrategy} alt="Strategy diagram" className="w-full h-full object-cover" />
           </div>
+        </section>
+
+        {/* Decisions & Constraints */}
+        <section className="w-full max-w-[1200px] flex flex-col gap-10">
+          <SectionLabel>DECISIONS &amp; CONSTRAINTS</SectionLabel>
+          <h2 className="text-[clamp(2.5rem,5vw,3.75rem)] font-extrabold leading-[1.15]"
+            style={{ fontFamily: "var(--font-bricolage)" }}>
+            The choices that defined the outcome,{" "}
+            <span className="gradient-cool">and the ones we had to fight for</span>
+          </h2>
+          <div className="flex flex-col gap-6">
+            <NumberedItem n="01">
+              <span className="font-extrabold text-[#6a6a6a]" style={{ fontFamily: "var(--font-jakarta)" }}>Deal simplification was off the table</span>
+              {`: The business couldn't remove deal types (revenue risk). We reframed the constraint: instead of simplifying the catalog, we surfaced one algorithmically-selected "Best Value" recommendation. Users got clarity; business kept its deal structure intact.`}
+            </NumberedItem>
+            <NumberedItem n="02">
+              <span className="font-extrabold text-[#6a6a6a]" style={{ fontFamily: "var(--font-jakarta)" }}>Mobile parity deferred</span>
+              {`: Timeline and resource constraints meant desktop shipped first. We accepted a temporary gap on mobile but mitigated it by building the design system for portability from day one: mobile implementation took 60% less time because of it.`}
+            </NumberedItem>
+            <NumberedItem n="03">
+              <span className="font-extrabold text-[#6a6a6a]" style={{ fontFamily: "var(--font-jakarta)" }}>Three concepts validated before engineering started</span>
+              {`: VIP Loyalty Sign-In, Best Value Pick, and Best-Price Guarantee were all tested as lo-fi prototypes. This changed the budget conversation: design could prove ROI before a single line of code was written.`}
+            </NumberedItem>
+            <NumberedItem n="04">
+              <span className="font-extrabold text-[#6a6a6a]" style={{ fontFamily: "var(--font-jakarta)" }}>Checkout as the primary intervention</span>
+              {`: Funnel analysis revealed 28% drop-off at checkout, higher than any upstream page. We concentrated resources there rather than spreading effort across the full site. The 4.9% conversion rate validated the focus.`}
+            </NumberedItem>
+          </div>
+          <p className="text-[#7c5cff] text-2xl font-bold max-w-[780px] leading-normal"
+            style={{ fontFamily: "var(--font-bricolage)" }}>
+            Retrospective: I&apos;d push for mobile parity from the start. And I&apos;d define explicit success metrics for each design concept before entering stakeholder reviews. Pre-mortems would have sharpened the A/B test design from round one.
+          </p>
         </section>
 
         {/* Key Solutions */}
@@ -332,14 +367,14 @@ export default function Priceline() {
             <span className="gradient-warm">design decisions</span>
           </h2>
           <div className="flex flex-wrap gap-4">
-            <SolutionCard title="Unified Design System" accent="100% consistency" accentColor="#7c5cff"
+            <SolutionCard title="Unified Design System" accent="unified system" accentColor="#7c5cff"
               bullets={[
                 "Type, color, spacing, and component patterns applied across every page",
                 "Eliminated the fragmented look-and-feel that eroded user confidence",
               ]} />
             <SolutionCard title="VIP Loyalty Sign-In" accent="Live in production" accentColor="#ff6b9a"
               bullets={[
-                `Sign-in reframed as a value driver: "see your best price"—not a gate`,
+                `Sign-in reframed as a value driver: "see your best price", not a gate`,
                 "Signed-in users showed significantly lower abandonment at checkout",
               ]} />
             <SolutionCard title="Best Value Recommendation" accent="Decision paralysis" accentColor="#4fc3ff"
@@ -350,17 +385,17 @@ export default function Priceline() {
             <SolutionCard title="Checkout Redesign" accent="4.9% conversion rate" accentColor="#4fc3ff"
               bullets={[
                 "Redesigned the highest drop-off stage with fee transparency and progress indicators",
-                "Autofill for signed-in users cut checkout time by 40%—the single largest conversion driver",
+                "Autofill for signed-in users cut checkout time by 40%, the single largest conversion driver",
               ]} />
             <SolutionCard title="4-Round A/B Testing" accent="Data-driven" accentColor="#4fc3ff"
               bullets={[
                 "Tested fee transparency timing, progress-bar placement, and autofill across 4 rounds",
                 "Lo-fi prototype validated the redesigned checkout before a single line of code",
               ]} />
-            <SolutionCard title="Hotel Detail Optimization" accent="+2.9% lift" accentColor="#4fc3ff"
+            <SolutionCard title="Hotel Detail Optimization" accent="trust at decision point" accentColor="#4fc3ff"
               bullets={[
                 "Best-Price Guarantee badge built trust at the highest-hesitation moment",
-                "Drove Hotels conversion from baseline to 2.9% through research-led iteration",
+                "Reduced hesitation at the booking confirmation step through research-led iteration",
               ]} />
           </div>
           {/* Screen shots */}
@@ -393,10 +428,10 @@ export default function Priceline() {
             <span className="gradient-cool">measurable business outcomes</span>
           </h2>
           <div className="flex flex-wrap gap-4">
-            <ImpactCard value="4.9%" label="Conversion lift via A/B testing—proof that framing design in business metrics earns design a seat at the strategy table" gradient="gradient-warm" />
-            <ImpactCard value="NPS 41" label="Post-redesign user satisfaction score, reflecting a measurably improved experience across the full purchase journey" gradient="gradient-cool" />
+            <ImpactCard value="4.9%" label="Checkout conversion rate (up from 2%, +2.9 pts), achieved through A/B testing and proof that design framed in business metrics earns a seat at the strategy table" gradient="gradient-warm" />
+            <ImpactCard value="NPS 41" label="Post-redesign satisfaction score (+6), reflecting a measurably improved experience across the full purchase journey" gradient="gradient-cool" />
             <ImpactCard value="20pts" label="Increase in authenticated sessions via VIP sign-in" gradient="gradient-warm-reverse" />
-            <ImpactCard value="100%" label="Design consistency across all redesigned surfaces" gradient="gradient-cool" />
+            <ImpactCard value="VIP" label="Loyalty concept still live in production" gradient="gradient-cool" />
           </div>
         </section>
       </main>
@@ -423,6 +458,14 @@ export default function Priceline() {
               className="flex items-center gap-3 px-8 py-4 rounded-full text-white text-base font-medium hover:opacity-90 transition-opacity"
               style={{ fontFamily: "var(--font-jakarta)", background: "linear-gradient(90deg, #4fc3ff, #7c5cff 73.792%)" }}>
               LinkedIn
+            </a>
+            <a href="/api/resume" download="Peter_Lee_Resume_090526.pdf"
+              className="flex items-center gap-3 px-8 py-4 rounded-full text-white text-base font-medium hover:opacity-90 transition-opacity border border-white/30"
+              style={{ fontFamily: "var(--font-jakarta)" }}>
+              Download Resume
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                <path d="M7 1v9M7 10L4 7m3 3 3-3M1 12h12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
             </a>
           </div>
         </div>

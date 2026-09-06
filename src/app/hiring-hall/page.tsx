@@ -20,11 +20,15 @@ function Nav() {
           <span className="text-2xl font-extrabold gradient-warm" style={{ fontFamily: "var(--font-bricolage)" }}>Lee</span>
         </Link>
         <div className="hidden md:flex items-center gap-2">
-          {["Work", "About", "Philosophy"].map((link) => (
-            <Link key={link} href={`/#${link.toLowerCase()}`}
+          {[
+            { label: "Work", id: "work" },
+            { label: "About", id: "about" },
+            { label: "How I Operate", id: "how-i-operate" },
+          ].map(({ label, id }) => (
+            <Link key={id} href={`/#${id}`}
               className="px-4 py-3 text-[#6b7280] text-base tracking-wide hover:text-[#010101] transition-colors"
               style={{ fontFamily: "var(--font-jakarta)", fontWeight: 500 }}>
-              {link}
+              {label}
             </Link>
           ))}
           <Link href="/#contact"
@@ -112,28 +116,27 @@ export default function HiringHall() {
       <Nav />
 
       <main className="flex flex-col items-center gap-36 px-8 pb-0">
-        <div className="w-full max-w-[1200px] pt-10">
-          <Link href="/#work" className="inline-flex items-center gap-2 text-[#6b7280] text-base hover:text-[#7c5cff] transition-colors group"
-            style={{ fontFamily: "var(--font-jakarta)", fontWeight: 500 }}>
-            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true" className="transition-transform group-hover:-translate-x-1 duration-200">
-              <path d="M11 14L6 9L11 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-            Back to Work
-          </Link>
-        </div>
-
         {/* Hero image */}
-        <section className="w-full max-w-[1200px] pt-16 flex flex-col gap-16">
-          <div className="w-full aspect-[1200/835] rounded-[10px] md:rounded-[30px] overflow-hidden">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={assets.heroImage} alt="Hiring Hall app" className="w-full h-full object-cover" />
+        <section className="w-full max-w-[1200px] pt-10 flex flex-col gap-16">
+          <div className="flex flex-col gap-[70px]">
+            <Link href="/#work" className="inline-flex items-center gap-2 text-[#6b7280] text-base hover:text-[#7c5cff] transition-colors group"
+              style={{ fontFamily: "var(--font-jakarta)", fontWeight: 500 }}>
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true" className="transition-transform group-hover:-translate-x-1 duration-200">
+                <path d="M11 14L6 9L11 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+              Back to Work
+            </Link>
+            <div className="w-full aspect-[1200/835] rounded-[10px] md:rounded-[30px] overflow-hidden">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={assets.heroImage} alt="Hiring Hall app" className="w-full h-full object-cover" />
+            </div>
           </div>
 
           {/* Eyebrow + headline */}
           <div className="flex flex-col gap-7">
             <span className="text-[#7c5cff] text-lg tracking-[2px]"
               style={{ fontFamily: "var(--font-jetbrains)", fontWeight: 500 }}>
-              CASE STUDY / HIRING HALL - B2C CONTECH APP
+              CASE STUDY / HIRING HALL · 0→1 · FOUNDER · MARKETPLACE · AI
             </span>
             <h1 className="text-[clamp(2.5rem,5vw,3.75rem)] font-extrabold leading-[1.15]"
               style={{ fontFamily: "var(--font-bricolage)" }}>
@@ -194,10 +197,10 @@ export default function HiringHall() {
             Jobs for construction workers rely on slow, word of mouth, union halls, or antiquated and biased means of finding work. Favoritism and unfair practices lead to qualified professionals being at a disadvantage as well as wastefulness in cost and time.
           </p>
           <div className="flex flex-col gap-6">
-            <NumberedItem n="01">U.S. construction industry facing its worst labor shortage in decades — hiring is the #1 challenge cited by contractors</NumberedItem>
+            <NumberedItem n="01">U.S. construction industry facing its worst labor shortage in decades: hiring is the #1 challenge cited by contractors</NumberedItem>
             <NumberedItem n="02">Construction jobs still filled through word-of-mouth or union halls, locking out qualified tradespeople</NumberedItem>
-            <NumberedItem n="03">Weeks time-to-hire for skilled trades using traditional methods — causing costly project delays and budget overruns</NumberedItem>
-            <NumberedItem n="04">No purpose-built digital platforms existed for on-demand construction labor matching at launch — a wide-open category gap</NumberedItem>
+            <NumberedItem n="03">Weeks time-to-hire for skilled trades using traditional methods, causing costly project delays and budget overruns</NumberedItem>
+            <NumberedItem n="04">No purpose-built digital platforms existed for on-demand construction labor matching at launch: a wide-open category gap</NumberedItem>
           </div>
           <div className="flex flex-wrap gap-4 pt-4">
             <div className="bg-white border border-[#d4d4d4] rounded-[20px] flex-1 min-w-[240px] max-w-[284px] h-[260px] flex flex-col items-center justify-center gap-2 p-6 text-center"
@@ -228,7 +231,7 @@ export default function HiringHall() {
           <div className="flex flex-col gap-6">
             <NumberedItem n="01">Led end-to-end product design from concept through launch as sole designer/researcher on mobile platform</NumberedItem>
             <NumberedItem n="02">Shaped product direction and influenced go-to-market positioning based on user research, competitive analysis, and customer interviews</NumberedItem>
-            <NumberedItem n="03">Directed a cross-functional, remote team of 11 — across Product, Engineering, Marketing, QA, and Sales</NumberedItem>
+            <NumberedItem n="03">Led a cross-functional team of 10 across Product, Engineering, QA, and Sales as founder and sole designer</NumberedItem>
             <NumberedItem n="04">Designed the UX/UI/design system that governed the platform's functionality, visual and interaction language</NumberedItem>
           </div>
         </section>
@@ -247,7 +250,7 @@ export default function HiringHall() {
           </p>
           <div className="flex flex-wrap gap-4">
             <InsightCard title="User needs" accent="12 pros, 10 companies" accentColor="#7c5cff">
-              Users don&apos;t just want a job board; they want a digital handshake — a way to verify a person&apos;s reputation and work quality outside of their physical inner circle.
+              Users don&apos;t just want a job board; they want a digital handshake: a way to verify a person&apos;s reputation and work quality outside of their physical inner circle.
             </InsightCard>
             <InsightCard title="Funnel Analysis" accent="68% drop-off" accentColor="#ff6b9a">
               <ul className="list-disc pl-5 space-y-1">
@@ -256,7 +259,7 @@ export default function HiringHall() {
                 <li>Weeks-long cycles didn&apos;t match job site reality</li>
               </ul>
             </InsightCard>
-            <InsightCard title='"I need work (or workers) fast — like today"' accent="Hours, not weeks" accentColor="#4fc3ff">
+            <InsightCard title='"I need work (or workers) fast, like today"' accent="Hours, not weeks" accentColor="#4fc3ff">
               Analyzed user journeys revealing 68% of contractors dropped off during the job requirements step.
             </InsightCard>
             <InsightCard title="Mobile Adoption" accent="80% job searches via mobile" accentColor="#4fc3ff">
@@ -279,18 +282,50 @@ export default function HiringHall() {
           </h2>
           <p className="text-[#6a6a6a] text-lg leading-7 max-w-[780px]"
             style={{ fontFamily: "var(--font-jakarta)", fontWeight: 500 }}>
-            We stopped designing for hiring workflows — and started designing for how work actually happens on job sites.
+            We stopped designing for hiring workflows and started designing for how work actually happens on job sites.
           </p>
           <div className="flex flex-col gap-6">
-            <NumberedItem n="01">Anchored identity around verified credentials and work portfolios — not résumés built for office jobs</NumberedItem>
-            <NumberedItem n="02">Target time-to-match for on-demand hire requests — designed for the urgency of live job sites, not HR pipelines</NumberedItem>
-            <NumberedItem n="03">Built scheduling around project-based, non-linear work patterns — real-time availability, not static calendar slots</NumberedItem>
-            <NumberedItem n="04">Invested in community features — connections, endorsements, reputation — that compound in value as the platform grows</NumberedItem>
+            <NumberedItem n="01">Anchored identity around verified credentials and work portfolios, not résumés built for office jobs</NumberedItem>
+            <NumberedItem n="02">Target time-to-match for on-demand hire requests: designed for the urgency of live job sites, not HR pipelines</NumberedItem>
+            <NumberedItem n="03">Built scheduling around project-based, non-linear work patterns: real-time availability, not static calendar slots</NumberedItem>
+            <NumberedItem n="04">Invested in community features (connections, endorsements, reputation) that compound in value as the platform grows</NumberedItem>
           </div>
           <div className="w-full aspect-[1200/671] rounded-[10px] md:rounded-[30px] overflow-hidden">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={assets.heroImage2} alt="Strategy screens" className="w-full h-full object-cover" />
           </div>
+        </section>
+
+        {/* Decisions & Constraints */}
+        <section className="w-full max-w-[1200px] flex flex-col gap-10">
+          <SectionLabel>DECISIONS &amp; CONSTRAINTS</SectionLabel>
+          <h2 className="text-[clamp(2.5rem,5vw,3.75rem)] font-extrabold leading-[1.15]"
+            style={{ fontFamily: "var(--font-bricolage)" }}>
+            The choices we made, and the ones{" "}
+            <span className="gradient-warm">we deliberately didn&apos;t</span>
+          </h2>
+          <div className="flex flex-col gap-6">
+            <NumberedItem n="01">
+              <span className="font-extrabold text-[#6a6a6a]" style={{ fontFamily: "var(--font-jakarta)" }}>Solo designer, 16-week timeline</span>
+              {`: Every feature had to earn its place. We cut settings screens, edge cases, and desktop entirely. This delivered a tighter MVP but left the company-side job-posting flow under-iterated relative to the worker experience.`}
+            </NumberedItem>
+            <NumberedItem n="02">
+              <span className="font-extrabold text-[#6a6a6a]" style={{ fontFamily: "var(--font-jakarta)" }}>Worker-first supply seeding</span>
+              {`: Chose to build worker-side supply before driving employer demand, the proven two-sided marketplace playbook. It worked, but company-posting UX received 40% of the testing cycles the worker side got. We ran the catch-up iteration post-launch.`}
+            </NumberedItem>
+            <NumberedItem n="03">
+              <span className="font-extrabold text-[#6a6a6a]" style={{ fontFamily: "var(--font-jakarta)" }}>Mobile-only at launch</span>
+              {`: 80% of job searches happen on mobile. We shipped iOS-first and deferred web indefinitely. Right call for the core user, but it created a gap for enterprise accounts managing multiple hires who needed desktop workflows.`}
+            </NumberedItem>
+            <NumberedItem n="04">
+              <span className="font-extrabold text-[#6a6a6a]" style={{ fontFamily: "var(--font-jakarta)" }}>On-demand matching over community-first</span>
+              {`: Tested two product directions: lead with the job feed (on-demand matching) vs. lead with networking (community graph). Chose on-demand because time-to-hire urgency was the #1 pain point; community features became a growth lever post-launch, not the core loop.`}
+            </NumberedItem>
+          </div>
+          <p className="text-[#7c5cff] text-2xl font-bold max-w-[780px] leading-normal"
+            style={{ fontFamily: "var(--font-bricolage)" }}>
+            Retrospective: I&apos;d weight employer-side testing more evenly from the start. The worker experience was strong at launch; the job-posting flow needed two more iteration cycles that ran post-launch instead of pre-launch.
+          </p>
         </section>
 
         {/* Key Solutions */}
@@ -303,7 +338,7 @@ export default function HiringHall() {
           </h2>
           <div className="flex flex-wrap gap-4">
             <SolutionCard title="On Demand Hiring" accent="24/7 Matching" accentColor="#7c5cff"
-              bullets={["Post a need, accept work in real time — no application and waiting", "Filters for trade type, location, duration, and rate"]} />
+              bullets={["Post a need, accept work in real time, no application and waiting", "Filters for trade type, location, duration, and rate"]} />
             <SolutionCard title="Credential Builder" accent="Portable Identity" accentColor="#ff6b9a"
               bullets={["Licenses, certs, and specializations in one verified profile", "Build life-long credentials/profile"]} />
             <SolutionCard title="Work Portfolio" accent="Hours, not weeks" accentColor="#4fc3ff"
@@ -344,7 +379,7 @@ export default function HiringHall() {
               />
             </div>
             <p className="text-sm text-[#6b7280] text-center max-w-[340px]" style={{ fontFamily: "var(--font-jakarta)" }}>
-              Tap through 60 screens — full registration, job feed, chat, apply flow &amp; more
+              Tap through 60 screens: full registration, job feed, chat, apply flow &amp; more
             </p>
           </div>
 
@@ -363,7 +398,7 @@ export default function HiringHall() {
           <SectionLabel>IMPACT</SectionLabel>
           <h2 className="text-[clamp(2.5rem,5vw,3.75rem)] font-extrabold leading-[1.15]"
             style={{ fontFamily: "var(--font-bricolage)" }}>
-            From blueprint to launch —{" "}
+            From blueprint to launch,{" "}
             <span className="gradient-cool">modernizing how construction hires.</span>
           </h2>
           <div className="flex flex-wrap gap-4">
@@ -386,7 +421,7 @@ export default function HiringHall() {
             className="flex items-center gap-3 px-10 py-5 rounded-full border-2 border-[#7c5cff] text-[#7c5cff] text-xl font-medium hover:bg-[#7c5cff] hover:text-white transition-colors duration-200"
             style={{ fontFamily: "var(--font-jakarta)" }}
           >
-            ContentDial — AI-Powered Content Intelligence
+            ContentDial: AI-Powered Content Intelligence
             <svg width="28" height="15" viewBox="0 0 28 15" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M0 7.5H26M26 7.5L20 1M26 7.5L20 14" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
@@ -416,6 +451,14 @@ export default function HiringHall() {
               className="flex items-center gap-3 px-8 py-4 rounded-full text-white text-base font-medium hover:opacity-90 transition-opacity"
               style={{ fontFamily: "var(--font-jakarta)", background: "linear-gradient(90deg, #4fc3ff, #7c5cff 73.792%)" }}>
               LinkedIn
+            </a>
+            <a href="/api/resume" download="Peter_Lee_Resume_090526.pdf"
+              className="flex items-center gap-3 px-8 py-4 rounded-full text-white text-base font-medium hover:opacity-90 transition-opacity border border-white/30"
+              style={{ fontFamily: "var(--font-jakarta)" }}>
+              Download Resume
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                <path d="M7 1v9M7 10L4 7m3 3 3-3M1 12h12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
             </a>
           </div>
         </div>

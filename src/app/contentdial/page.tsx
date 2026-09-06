@@ -21,11 +21,15 @@ function Nav() {
           <span className="text-2xl font-extrabold gradient-warm" style={{ fontFamily: "var(--font-bricolage)" }}>Lee</span>
         </Link>
         <div className="hidden md:flex items-center gap-2">
-          {["Work", "About", "Philosophy"].map((link) => (
-            <Link key={link} href={`/#${link.toLowerCase()}`}
+          {[
+            { label: "Work", id: "work" },
+            { label: "About", id: "about" },
+            { label: "How I Operate", id: "how-i-operate" },
+          ].map(({ label, id }) => (
+            <Link key={id} href={`/#${id}`}
               className="px-4 py-3 text-[#6b7280] text-base tracking-wide hover:text-[#010101] transition-colors"
               style={{ fontFamily: "var(--font-jakarta)", fontWeight: 500 }}>
-              {link}
+              {label}
             </Link>
           ))}
           <Link href="/#contact"
@@ -97,29 +101,28 @@ export default function ContentDial() {
       <Nav />
 
       <main className="flex flex-col items-center gap-36 px-8 pb-0">
-        <div className="w-full max-w-[1200px] pt-10">
-          <Link href="/#work" className="inline-flex items-center gap-2 text-[#6b7280] text-base hover:text-[#7c5cff] transition-colors group"
-            style={{ fontFamily: "var(--font-jakarta)", fontWeight: 500 }}>
-            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true" className="transition-transform group-hover:-translate-x-1 duration-200">
-              <path d="M11 14L6 9L11 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-            Back to Work
-          </Link>
-        </div>
-
         {/* Hero */}
-        <section className="w-full max-w-[1200px] flex flex-col gap-16">
-          {/* Hero image */}
-          <div className="w-full rounded-[10px] md:rounded-[30px] overflow-hidden" style={{ background: "linear-gradient(90deg, #4fc3ff, #7c5cff 73.792%)", aspectRatio: "1200/835" }}>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={imgHero} alt="ContentDial hero" className="w-full h-full object-cover rounded-[10px] md:rounded-[30px]" />
+        <section className="w-full max-w-[1200px] pt-10 flex flex-col gap-16">
+          <div className="flex flex-col gap-[70px]">
+            <Link href="/#work" className="inline-flex items-center gap-2 text-[#6b7280] text-base hover:text-[#7c5cff] transition-colors group"
+              style={{ fontFamily: "var(--font-jakarta)", fontWeight: 500 }}>
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true" className="transition-transform group-hover:-translate-x-1 duration-200">
+                <path d="M11 14L6 9L11 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+              Back to Work
+            </Link>
+            {/* Hero image */}
+            <div className="w-full rounded-[10px] md:rounded-[30px] overflow-hidden" style={{ background: "linear-gradient(90deg, #4fc3ff, #7c5cff 73.792%)", aspectRatio: "1200/835" }}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={imgHero} alt="ContentDial hero" className="w-full h-full object-cover rounded-[10px] md:rounded-[30px]" />
+            </div>
           </div>
 
           {/* Eyebrow + headline */}
           <div className="flex flex-col gap-7">
             <span className="text-[#7c5cff] text-lg tracking-[2px]"
               style={{ fontFamily: "var(--font-jetbrains)", fontWeight: 500 }}>
-              AI - POWERED SAAS PRODUCT
+              AI · B2B SAAS · 0→1 · PRODUCT STRATEGY
             </span>
             <h1 className="text-[clamp(2.5rem,5vw,3.75rem)] font-extrabold leading-[1.15]"
               style={{ fontFamily: "var(--font-bricolage)" }}>
@@ -207,7 +210,7 @@ export default function ContentDial() {
           <SectionLabel>INSIGHT &amp; RESEARCH</SectionLabel>
           <h2 className="text-[clamp(2.5rem,5vw,3.75rem)] font-extrabold leading-[1.15]"
             style={{ fontFamily: "var(--font-bricolage)" }}>
-            {`The problem wasn't content creation— it was `}
+            {`The problem wasn't content creation, it was `}
             <span className="gradient-cool">decision uncertainty</span>
           </h2>
           <p className="text-[#7c5cff] text-2xl font-bold max-w-[780px] leading-normal"
@@ -225,7 +228,7 @@ export default function ContentDial() {
               AI must be explainable, transparent, and augment (not replace) human judgment.
             </InsightCard>
             <InsightCard title="ROI Visibility" accent="78% Unclear ROI" accentColor="#4fc3ff">
-              {`78% of users couldn't articulate the ROI their content marketing was generating—a key retention issue.`}
+              {`78% of users couldn't articulate the ROI their content marketing was generating, a key retention issue.`}
             </InsightCard>
           </div>
           {/* Research image */}
@@ -255,6 +258,38 @@ export default function ContentDial() {
           {/* AI Strategy diagram */}
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={imgAiStrategy} alt="AI strategy diagram" className="w-full h-auto block rounded-[20px]" style={{ boxShadow: "0 0 30px rgba(0,0,0,0.12)" }} />
+        </section>
+
+        {/* Decisions & Constraints */}
+        <section className="w-full max-w-[1200px] flex flex-col gap-10">
+          <SectionLabel>DECISIONS &amp; CONSTRAINTS</SectionLabel>
+          <h2 className="text-[clamp(2.5rem,5vw,3.75rem)] font-extrabold leading-[1.15]"
+            style={{ fontFamily: "var(--font-bricolage)" }}>
+            Nine weeks, one designer &mdash;{" "}
+            <span className="gradient-warm">here&apos;s how we chose to use them</span>
+          </h2>
+          <div className="flex flex-col gap-6">
+            <NumberedItem n="01">
+              <span className="font-extrabold text-[#6a6a6a]" style={{ fontFamily: "var(--font-jakarta)" }}>AI transparency over full automation</span>
+              {`: Research showed 72% of users engaged with AI rationale before acting on recommendations. We chose to show the "why" behind every prediction rather than hiding it. This added design complexity but drove 65% adoption of AI recommendations.`}
+            </NumberedItem>
+            <NumberedItem n="02">
+              <span className="font-extrabold text-[#6a6a6a]" style={{ fontFamily: "var(--font-jakarta)" }}>Augment, don&apos;t replace</span>
+              {`: We rejected full automation as the north star. Advertisers needed to stay in control of final decisions. The AI surfaces ranked options and confidence signals; humans make the call. This framing was critical to enterprise buy-in and adoption.`}
+            </NumberedItem>
+            <NumberedItem n="03">
+              <span className="font-extrabold text-[#6a6a6a]" style={{ fontFamily: "var(--font-jakarta)" }}>Campaign lifecycle over dashboard-first</span>
+              {`: Early concepts led with a reporting dashboard, typical for ad tech. Research revealed the real pain was upstream, in planning and launch. We restructured the entire IA around the campaign lifecycle, not the data view. This was a bet against the category convention, and it paid off.`}
+            </NumberedItem>
+            <NumberedItem n="04">
+              <span className="font-extrabold text-[#6a6a6a]" style={{ fontFamily: "var(--font-jakarta)" }}>9-week constraint as a forcing function</span>
+              {`: With a strict timeline and a single designer, we cut every feature that didn't directly reduce decision uncertainty for advertisers. This shipped a tighter MVP than an unconstrained roadmap would have produced.`}
+            </NumberedItem>
+          </div>
+          <p className="text-[#7c5cff] text-2xl font-bold max-w-[780px] leading-normal"
+            style={{ fontFamily: "var(--font-bricolage)" }}>
+            Retrospective: I&apos;d invest more in publisher-side research earlier. The platform optimized heavily for advertiser decisions, but publisher experience and workflow were under-explored, creating onboarding friction post-launch.
+          </p>
         </section>
 
         {/* Key Solutions */}
@@ -328,7 +363,7 @@ export default function ContentDial() {
             className="flex items-center gap-3 px-10 py-5 rounded-full border-2 border-[#7c5cff] text-[#7c5cff] text-xl font-medium hover:bg-[#7c5cff] hover:text-white transition-colors duration-200"
             style={{ fontFamily: "var(--font-jakarta)" }}
           >
-            Priceline — E-Commerce Redesign
+            Priceline: E-Commerce Redesign
             <svg width="28" height="15" viewBox="0 0 28 15" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M0 7.5H26M26 7.5L20 1M26 7.5L20 14" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
@@ -358,6 +393,14 @@ export default function ContentDial() {
               className="flex items-center gap-3 px-8 py-4 rounded-full text-white text-base font-medium hover:opacity-90 transition-opacity"
               style={{ fontFamily: "var(--font-jakarta)", background: "linear-gradient(90deg, #4fc3ff, #7c5cff 73.792%)" }}>
               LinkedIn
+            </a>
+            <a href="/api/resume" download="Peter_Lee_Resume_090526.pdf"
+              className="flex items-center gap-3 px-8 py-4 rounded-full text-white text-base font-medium hover:opacity-90 transition-opacity border border-white/30"
+              style={{ fontFamily: "var(--font-jakarta)" }}>
+              Download Resume
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                <path d="M7 1v9M7 10L4 7m3 3 3-3M1 12h12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
             </a>
           </div>
         </div>

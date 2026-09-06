@@ -1,7 +1,12 @@
 "use client";
 import { useState } from "react";
 
-const links = ["Work", "About", "Philosophy", "Contact"];
+const links = [
+  { label: "Work", id: "work" },
+  { label: "About", id: "about" },
+  { label: "How I Operate", id: "how-i-operate" },
+  { label: "Contact", id: "contact" },
+];
 
 export default function MobileNav() {
   const [open, setOpen] = useState(false);
@@ -30,15 +35,15 @@ export default function MobileNav() {
       {open && (
         <div className="md:hidden absolute top-full left-0 right-0 bg-white border-b border-gray-100 shadow-md z-50">
           <div className="flex flex-col px-6 py-4 gap-1">
-            {links.map((link) => (
+            {links.map(({ label, id }) => (
               <a
-                key={link}
-                href={`/#${link.toLowerCase()}`}
+                key={id}
+                href={`/#${id}`}
                 onClick={() => setOpen(false)}
                 className="px-4 py-3 text-[#6b7280] text-base hover:text-[#010101] transition-colors rounded-lg"
                 style={{ fontFamily: "var(--font-jakarta)", fontWeight: 500 }}
               >
-                {link}
+                {label}
               </a>
             ))}
           </div>

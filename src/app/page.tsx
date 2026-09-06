@@ -4,6 +4,7 @@ import BackToTop from "@/components/BackToTop";
 import MobileNav from "@/components/MobileNav";
 
 const assets = {
+  caCard: "/images/ca-card.png",
   hhCard: "/images/hh-card.png",
   contentDialCard: "/images/contentdial-card.png",
   pricelineCard: "/images/priceline-card.png",
@@ -104,14 +105,18 @@ export default function Home() {
           </a>
           {/* Desktop nav */}
           <div className="hidden md:flex items-center gap-2">
-            {["Work", "About", "Philosophy"].map((link) => (
+            {[
+              { label: "Work", id: "work" },
+              { label: "About", id: "about" },
+              { label: "How I Operate", id: "how-i-operate" },
+            ].map(({ label, id }) => (
               <a
-                key={link}
-                href={`#${link.toLowerCase()}`}
+                key={id}
+                href={`#${id}`}
                 className="px-4 py-3 text-[#6b7280] text-base tracking-wide hover:text-[#010101] transition-colors"
                 style={{ fontFamily: "var(--font-jakarta)", fontWeight: 500 }}
               >
-                {link}
+                {label}
               </a>
             ))}
             <a
@@ -135,16 +140,16 @@ export default function Home() {
             className="text-[clamp(2.5rem,5vw,3.75rem)] font-extrabold leading-[1.15]"
             style={{ fontFamily: "var(--font-bricolage)" }}
           >
-            Hi, I&apos;m an{" "}
-            <span className="gradient-warm">Agentic AI Design Lead</span>
-            {" "}- I drive business results by shaping product strategy, leading high-performing design teams, and solving complex challenges at the intersection of user needs and organizational goals.
+            Hi, I&apos;m a{" "}
+            <span className="gradient-warm">Staff Product Designer &amp; AI Design Leader</span>
+            {" "}- I turn ambiguous business problems into clear product strategy, scalable systems, and AI-powered experiences that create measurable impact.
           </h1>
 
           <div className="flex flex-wrap gap-3 md:gap-4">
             {[
-              { label: "Agentic AI Design", cls: "gradient-warm" },
-              { label: "Product Design", cls: "gradient-cool" },
-              { label: "Product Strategy", cls: "gradient-warm" },
+              { label: "Agentic AI Design", cls: "gradient-cool" },
+              { label: "0-1 Product Design", cls: "gradient-warm" },
+              { label: "Complex Systems", cls: "gradient-warm" },
               { label: "Business Impact", cls: "gradient-warm" },
             ].map(({ label, cls }) => (
               <div
@@ -163,12 +168,57 @@ export default function Home() {
         </section>
 
         {/* Featured Work */}
-        <section id="work" className="w-full max-w-[1200px] flex flex-col gap-8 md:gap-16">
+        <section id="work" className="w-full max-w-[1200px] flex flex-col gap-8 md:gap-16 scroll-mt-24">
           <div className="flex justify-center">
             <SectionLabel>FEATURED WORK</SectionLabel>
           </div>
 
-          {/* Card 1 — Hiring Hall */}
+          {/* Card 0: Credentialai */}
+          <div
+            className="w-full rounded-[24px] md:rounded-[33px] px-5 py-8 md:px-12 md:py-16 flex flex-wrap gap-6 md:gap-8 items-center"
+            style={{
+              background: "linear-gradient(119deg, #f8feff 44.85%, #f2e0f8 97.74%)",
+              boxShadow: "0 0 35px rgba(63,0,141,0.16)",
+            }}
+          >
+            <div className="flex-1 min-w-[260px] max-w-[600px] flex flex-col gap-4 md:gap-5">
+              <span className="text-[#7c5cff] text-sm md:text-base tracking-widest px-2" style={{ fontFamily: "var(--font-jetbrains)", fontWeight: 500 }}>
+                BETA · AI-POWERED PHYSICIAN CREDENTIALING &amp; MATCHING
+              </span>
+              <h2
+                className="text-[clamp(1.5rem,3.5vw,2.9rem)] font-bold leading-[1.1] px-2 text-[#010101]"
+                style={{ fontFamily: "var(--font-bricolage)" }}
+              >
+                Directing a credentialing AI agent from market gap to viable business
+              </h2>
+              <p className="text-[#6b7280] text-lg md:text-2xl px-2" style={{ fontFamily: "var(--font-jakarta)" }}>
+                Credentialai | Research, Architecture &amp; Design
+              </p>
+              <div className="h-2 md:h-4" />
+              <div className="flex items-end justify-between">
+                <div className="flex flex-col items-center gap-1 pl-2">
+                  <span className="text-[3rem] md:text-[4.5rem] font-bold leading-none gradient-warm" style={{ fontFamily: "var(--font-bricolage)" }}>3</span>
+                  <span className="text-[#6b7280] text-base md:text-lg text-center" style={{ fontFamily: "var(--font-jakarta)" }}>Sub-agents<br />Orchestrated</span>
+                </div>
+                <div className="flex flex-col items-end gap-1 pr-2">
+                  <span className="text-[3rem] md:text-[4.5rem] font-bold leading-none gradient-cool" style={{ fontFamily: "var(--font-bricolage)" }}>4/4</span>
+                  <span className="text-[#6b7280] text-base md:text-lg text-right" style={{ fontFamily: "var(--font-jakarta)" }}>Verdict Paths<br />Verified</span>
+                </div>
+              </div>
+              <div className="hidden md:block mt-4">
+                <ViewCaseStudyButton href="/credentialai" />
+              </div>
+            </div>
+            <div className="w-full md:flex-1 md:min-w-[280px] md:max-w-[480px] h-[260px] md:h-[480px] relative rounded-[10px] md:rounded-[33px] overflow-hidden">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={assets.caCard} alt="Credentialai live product" className="absolute inset-0 w-full h-full object-cover" />
+            </div>
+            <div className="w-full md:hidden">
+              <ViewCaseStudyButton href="/credentialai" />
+            </div>
+          </div>
+
+          {/* Card 1: Hiring Hall */}
           <div
             className="w-full rounded-[24px] md:rounded-[33px] px-5 py-8 md:px-12 md:py-16 flex flex-wrap gap-6 md:gap-8 items-center"
             style={{
@@ -182,7 +232,7 @@ export default function Home() {
             </div>
             <div className="flex-1 min-w-[260px] max-w-[600px] flex flex-col gap-4 md:gap-5">
               <span className="text-[#7c5cff] text-sm md:text-base tracking-widest px-2" style={{ fontFamily: "var(--font-jetbrains)", fontWeight: 500 }}>
-                B2C CONTECH APP
+                0→1 · FOUNDER · MARKETPLACE · AI · COMPLEX ECOSYSTEM
               </span>
               <h2
                 className="text-[clamp(1.5rem,3.5vw,2.9rem)] font-bold leading-[1.1] px-2 text-[#010101]"
@@ -195,13 +245,15 @@ export default function Home() {
               </p>
               <div className="h-2 md:h-4" />
               <div className="flex items-end justify-between">
-                <div className="flex flex-col items-center gap-1 pl-2">
-                  <span className="text-[3rem] md:text-[4.5rem] font-bold leading-none gradient-warm" style={{ fontFamily: "var(--font-bricolage)" }}>24%</span>
-                  <span className="text-[#6b7280] text-base md:text-lg" style={{ fontFamily: "var(--font-jakarta)" }}>Adoption rate</span>
+                {/* FLAG: leading with 42% user acquisition and 24% engagement lift to match
+                  the detail page Impact section. Confirm if you prefer a different order. */}
+              <div className="flex flex-col items-center gap-1 pl-2">
+                  <span className="text-[3rem] md:text-[4.5rem] font-bold leading-none gradient-warm" style={{ fontFamily: "var(--font-bricolage)" }}>42%</span>
+                  <span className="text-[#6b7280] text-base md:text-lg" style={{ fontFamily: "var(--font-jakarta)" }}>User Acquisition</span>
                 </div>
                 <div className="flex flex-col items-end gap-1 pr-2">
-                  <span className="text-[3rem] md:text-[4.5rem] font-bold leading-none gradient-cool" style={{ fontFamily: "var(--font-bricolage)" }}>5%</span>
-                  <span className="text-[#6b7280] text-base md:text-lg" style={{ fontFamily: "var(--font-jakarta)" }}>MoM revenue</span>
+                  <span className="text-[3rem] md:text-[4.5rem] font-bold leading-none gradient-cool" style={{ fontFamily: "var(--font-bricolage)" }}>24%</span>
+                  <span className="text-[#6b7280] text-base md:text-lg" style={{ fontFamily: "var(--font-jakarta)" }}>Engagement Lift</span>
                 </div>
               </div>
               <div className="mt-3 md:mt-4">
@@ -210,7 +262,7 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Card 2 — ContentDial */}
+          {/* Card 2: ContentDial */}
           <div
             className="w-full rounded-[24px] md:rounded-[33px] px-5 py-8 md:px-12 md:py-16 flex flex-wrap gap-6 md:gap-8 items-center"
             style={{
@@ -220,7 +272,7 @@ export default function Home() {
           >
             <div className="flex-1 min-w-[260px] max-w-[600px] flex flex-col gap-4">
               <span className="text-[#7c5cff] text-sm md:text-base tracking-widest px-2" style={{ fontFamily: "var(--font-jetbrains)", fontWeight: 500 }}>
-                AI-POWERED SAAS PRODUCT
+                AI · B2B SAAS · 0→1 · PRODUCT STRATEGY
               </span>
               <h2
                 className="text-[clamp(1.5rem,3.5vw,2.8rem)] font-bold leading-[1.1] px-2 text-[#010101]"
@@ -255,7 +307,7 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Card 3 — Priceline */}
+          {/* Card 3: Priceline */}
           <div
             className="w-full rounded-[24px] md:rounded-[33px] px-5 py-8 md:px-12 md:py-16 flex flex-wrap gap-6 md:gap-8 items-center"
             style={{
@@ -269,7 +321,7 @@ export default function Home() {
             </div>
             <div className="flex-1 min-w-[260px] max-w-[600px] flex flex-col gap-4">
               <span className="text-[#7c5cff] text-sm md:text-base tracking-widest px-2" style={{ fontFamily: "var(--font-jetbrains)", fontWeight: 500 }}>
-                B2C E-COMMERCE
+                B2C · GROWTH · CONVERSION · SCALE
               </span>
               <h2
                 className="text-[clamp(1.5rem,3.5vw,2.8rem)] font-bold leading-[1.1] px-2 text-[#010101]"
@@ -284,11 +336,11 @@ export default function Home() {
               <div className="flex items-end justify-between">
                 <div className="flex flex-col items-center gap-1 pl-2">
                   <span className="text-[3rem] md:text-[4.5rem] font-bold leading-none gradient-cool" style={{ fontFamily: "var(--font-bricolage)" }}>4.9%</span>
-                  <span className="text-[#6b7280] text-base md:text-lg" style={{ fontFamily: "var(--font-jakarta)" }}>Conversion Increase</span>
+                  <span className="text-[#6b7280] text-base md:text-lg" style={{ fontFamily: "var(--font-jakarta)" }}>Checkout Conversion (↑ from 2%)</span>
                 </div>
                 <div className="flex flex-col items-end gap-1 pr-2">
-                  <span className="text-[3rem] md:text-[4.5rem] font-bold leading-none gradient-warm" style={{ fontFamily: "var(--font-bricolage)" }}>6pt</span>
-                  <span className="text-[#6b7280] text-base md:text-lg text-right" style={{ fontFamily: "var(--font-jakarta)" }}>Lift In Customer<br />Satisfaction</span>
+                  <span className="text-[3rem] md:text-[4.5rem] font-bold leading-none gradient-warm" style={{ fontFamily: "var(--font-bricolage)" }}>NPS 41</span>
+                  <span className="text-[#6b7280] text-base md:text-lg text-right" style={{ fontFamily: "var(--font-jakarta)" }}>+6 post-redesign</span>
                 </div>
               </div>
               <div className="mt-3 md:mt-4">
@@ -317,7 +369,7 @@ export default function Home() {
         </section>
 
         {/* About Me */}
-        <section id="about" className="w-full max-w-[1200px] flex flex-col gap-6 md:gap-8">
+        <section id="about" className="w-full max-w-[1200px] flex flex-col gap-6 md:gap-8 scroll-mt-24">
           <SectionLabelLeft>ABOUT ME</SectionLabelLeft>
           <div className="h-4" />
 
@@ -347,6 +399,16 @@ export default function Home() {
             </div>
           </div>
 
+          <p
+            className="max-w-[900px] text-[#4a5266] text-base md:text-lg leading-7 -mt-4 md:-mt-6"
+            style={{ fontFamily: "var(--font-jakarta)" }}
+          >
+            Design, at its best, is a business decision. I work at the intersection of product vision and
+            execution - making hard prioritization calls and ensuring the work actually ships, performs, and
+            moves the business forward. Success isn&apos;t the output; it&apos;s the measurable impact it
+            creates for users and the business.
+          </p>
+
           {/* Core capabilities */}
           <div className="flex flex-col gap-4 mt-4 max-w-[700px]">
             <span
@@ -357,20 +419,27 @@ export default function Home() {
             </span>
             <div className="flex flex-wrap gap-3">
               {[
-                { label: "Product Design",            variant: "pink-blue"   },
-                { label: "AI Product Strategy",       variant: "blue-purple" },
-                { label: "Generative AI UX",          variant: "blue-purple" },
-                { label: "Design Leadership",         variant: "pink-blue"   },
-                { label: "Agentic Experience Design", variant: "gray"        },
-                { label: "UX Research",               variant: "gray"        },
-                { label: "Design Thinking",           variant: "pink-blue"   },
-                { label: "User-centered Design",      variant: "blue-purple" },
-                { label: "Systems Thinking",          variant: "gray"        },
-                { label: "Interaction Design",        variant: "blue-purple" },
-                { label: "UI Design",                 variant: "pink-blue"   },
-                { label: "A/B Testing",               variant: "gray"        },
-                { label: "Rapid Prototyping",         variant: "blue-purple" },
-                { label: "Usability Testing",         variant: "pink-blue"   },
+                { label: "Agentic AI",                 variant: "blue-purple" },
+                { label: "Product Design",              variant: "pink-blue"   },
+                { label: "UX Research",                 variant: "gray"        },
+                { label: "Human-in-the-Loop (HITL)",   variant: "blue-purple" },
+                { label: "Agent Orchestration",        variant: "blue-purple" },
+                { label: "Tool / Function Calling",    variant: "blue-purple" },
+                { label: "MCP",                        variant: "blue-purple" },
+                { label: "Agent Routing & Handoffs",   variant: "blue-purple" },
+                { label: "Guardrails",                 variant: "blue-purple" },
+                { label: "AI Evaluation / Evals",      variant: "blue-purple" },
+                { label: "Tracing & Observability",    variant: "blue-purple" },
+                { label: "RAG / Retrieval",            variant: "blue-purple" },
+                { label: "UI Design",                  variant: "pink-blue"   },
+                { label: "Rapid Prototyping",          variant: "blue-purple" },
+                { label: "Design Leadership",          variant: "pink-blue"   },
+                { label: "Design Thinking",            variant: "pink-blue"   },
+                { label: "User-centered Design",       variant: "blue-purple" },
+                { label: "Systems Thinking",           variant: "gray"        },
+                { label: "Interaction Design",         variant: "blue-purple" },
+                { label: "A/B Testing",                variant: "gray"        },
+                { label: "Usability Testing",          variant: "pink-blue"   },
               ].map(({ label, variant }) => (
                 <CapabilityPill key={label} label={label} variant={variant as "gray" | "pink-blue" | "blue-purple"} />
               ))}
@@ -378,46 +447,51 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Design Philosophy */}
-        <section id="philosophy" className="w-full max-w-[1200px] flex flex-col gap-8 md:gap-14 pb-16 md:pb-32">
-          <div className="flex justify-center">
-            <SectionLabel>DESIGN PHILOSOPHY</SectionLabel>
-          </div>
-
-          <div className="flex flex-col gap-10 items-center">
-            <h2
-              className="text-[clamp(2.5rem,5vw,3.75rem)] font-extrabold leading-[1.2] text-center"
-              style={{ fontFamily: "var(--font-bricolage)" }}
-            >
-              I believe great design is measured by the{" "}
-              <span className="gradient-warm">value it drives for users and the business,</span>{" "}
-              <span className="gradient-warm">not outputs.</span>
-            </h2>
-
-            <div
-              className="max-w-[900px] text-[#4a5266] text-lg leading-7 tracking-wide space-y-5 w-full"
-              style={{ fontFamily: "var(--font-jakarta)" }}
-            >
-              <p>
-                Design, at its best, is a business decision. I work at the intersection of product
-                vision and organizational influence — identifying where the market is going, making
-                hard prioritization calls, and ensuring the team has the clarity and confidence to execute.
-              </p>
-              <p>
-                Building great design orgs is the job. I hire for judgment, not just craft. I develop
-                leaders who can hold their own in any room — with engineers, executives, or customers —
-                and I build cultures where critical thinking and data-informed decision-making are the
-                norm, not the exception.
-              </p>
-              <p>
-                The work only matters if it moves the needle. I partner closely with product, engineering,
-                and executive leadership to make sure design isn&apos;t just at the table — it&apos;s
-                shaping the direction. Success is defined by outcomes: what shipped, how it performed,
-                and the measurable impact it created for the users and business.
-              </p>
-            </div>
+        {/* How I Operate */}
+        <section id="how-i-operate" className="w-full max-w-[1200px] flex flex-col gap-8 md:gap-10 pb-16 md:pb-32 scroll-mt-24">
+          <SectionLabelLeft>HOW I OPERATE</SectionLabelLeft>
+          <h2
+            className="text-[clamp(2rem,4vw,3rem)] font-extrabold leading-[1.2] max-w-[820px]"
+            style={{ fontFamily: "var(--font-bricolage)" }}
+          >
+            What Staff-level design actually looks like{" "}
+            <span className="gradient-cool">in practice, not in theory.</span>
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {[
+              {
+                title: "I work upstream, before the brief exists",
+                evidence: "Credentialai: scoped the market wedge and validated the concept with user research before any code existed.",
+              },
+              {
+                title: "I connect customer needs to business outcomes",
+                evidence: "Priceline: user research surfaced deal-type confusion as the real blocker to conversion. Led the redesign into a simplified best-value structure and a new VIP loyalty program that's still live in production today.",
+              },
+              {
+                title: "I simplify complex systems",
+                evidence: "Kargo & TripleLift: simplified fragmented, multi-product adtech suites, spanning programmatic, native, video, and branded content, into unified platforms non-technical teams could actually operate.",
+              },
+              {
+                title: "I create leverage through systems and AI",
+                evidence: "Applied systems thinking to ContentDial's decision engine, built design systems reused across TripleLift, Kargo, and Priceline, and directed agentic AI as the operating method for Credentialai's entire 0→1 build.",
+              },
+              {
+                title: "I shift roadmaps and budgets before a line of code is written",
+                evidence: "ContentDial: partnered with leadership to translate ML capabilities into usable decision workflows. Priceline: ran concept workshops with Product and Engineering that changed the budget conversation before a single line of code was written.",
+              },
+              {
+                title: "I develop and mentor designers",
+                evidence: "Kargo: scaled the design team from 0 to 6, establishing the data-driven design practices and OKRs the team still runs on.",
+              },
+            ].map(({ title, evidence }) => (
+              <div key={title} className="flex flex-col gap-2 p-6 bg-white border border-[#e5e7eb] rounded-[16px]">
+                <p className="text-[#010101] text-lg font-bold" style={{ fontFamily: "var(--font-bricolage)" }}>{title}</p>
+                <p className="text-[#6b7280] text-base leading-6" style={{ fontFamily: "var(--font-jakarta)" }}>{evidence}</p>
+              </div>
+            ))}
           </div>
         </section>
+
       </main>
 
       {/* Contact footer */}
@@ -463,6 +537,18 @@ export default function Home() {
               }}
             >
               LinkedIn
+            </a>
+
+            <a
+              href="/api/resume"
+              download="Peter_Lee_Resume_090526.pdf"
+              className="flex items-center gap-3 px-6 md:px-8 py-3 md:py-4 rounded-full text-white text-sm md:text-base font-medium hover:opacity-90 transition-opacity border border-white/30"
+              style={{ fontFamily: "var(--font-jakarta)" }}
+            >
+              Download Resume
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                <path d="M7 1v9M7 10L4 7m3 3 3-3M1 12h12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
             </a>
           </div>
         </div>
