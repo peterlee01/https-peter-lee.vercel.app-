@@ -75,19 +75,6 @@ function StatCard({ value, label, gradient }: { value: string; label: string; gr
   );
 }
 
-function InsightCard({ title, accent, accentColor, children }: {
-  title: string; accent: string; accentColor: string; children: React.ReactNode
-}) {
-  return (
-    <div className="bg-white border border-[#d4d4d4] rounded-[20px] flex-1 min-w-[240px] max-w-[286px] p-6 flex flex-col gap-3"
-      style={{ boxShadow: "0 0 20px rgba(0,0,0,0.04)" }}>
-      <p className="text-[#010101] text-2xl font-bold" style={{ fontFamily: "var(--font-bricolage)" }}>{title}</p>
-      <div className="text-[#6b7280] text-lg leading-7 flex-1" style={{ fontFamily: "var(--font-jakarta)", fontWeight: 500 }}>{children}</div>
-      <span className="text-lg font-extrabold" style={{ fontFamily: "var(--font-jetbrains)", color: accentColor }}>{accent}</span>
-    </div>
-  );
-}
-
 function SolutionCard({ title, accent, accentColor, bullets }: {
   title: string; accent: string; accentColor: string; bullets: string[]
 }) {
@@ -229,7 +216,7 @@ export default function Credentialai() {
               style={{ fontFamily: "var(--font-jakarta)" }}>
               A coordinator agent verifies physician identity, sanctions and license status against real
               government data, then AI-matches both sides: physicians for facilities, facilities and jobs for
-              physicians. Live and runnable, not a mockup.
+              physicians.
             </p>
           </div>
 
@@ -296,54 +283,55 @@ export default function Credentialai() {
         <section className="w-full max-w-[1200px] flex flex-col gap-10">
           <SectionLabel>ROLE &amp; LEADERSHIP</SectionLabel>
           <h2 className={h2} style={{ fontFamily: "var(--font-bricolage)" }}>
-            Research, architecture, design,{" "}
-            <span className="gradient-cool">backend code, prototypes and final site</span>
+            0-1 Product Design flow, research, architecture, design,{" "}
+            <span className="gradient-cool">prototypes and final site build</span>
           </h2>
           <div className="flex flex-col gap-6">
             <NumberedItem n="01">
               <span className={bold}>Research</span>
-              {`: competitive teardown and market scoping; reconciliation, not lookup speed, is the wedge`}
+              {`: competitive teardown and market scoping, user research, concept validation`}
             </NumberedItem>
             <NumberedItem n="02">
               <span className={bold}>Architecture</span>
-              {`: coordinator agent, live data sources, accounts and AI matching on both sides of the market`}
+              {`: coordinator agent, verification sub-agents, API data sources, AI matching on both sides of the market`}
             </NumberedItem>
             <NumberedItem n="03">
               <span className={bold}>Design</span>
-              {`: trust surfaces, verdict tiers, reports, both user journeys, and the brand`}
+              {`: trust surfaces, verdict tiers, reports, user journeys, UI & brand`}
             </NumberedItem>
             <NumberedItem n="04">
               <span className={bold}>Prototypes &amp; final site</span>
-              {`: usability-tested prototypes with 5 users, then shipped the production site in 60+ pull requests`}
+              {`: usability-tested prototypes, front & back-end site build`}
             </NumberedItem>
           </div>
-          <Shot src="/images/ca-v2-how.jpg" alt="How it works: one path for facilities, one for physicians"
-            caption="The shipped product: one verification, a path for each side of the market." />
         </section>
 
-        {/* Business Strategy & Research */}
+        {/* Research & Discovery */}
         <section className="w-full max-w-[1200px] flex flex-col gap-10">
-          <SectionLabel>BUSINESS STRATEGY &amp; RESEARCH</SectionLabel>
+          <SectionLabel>RESEARCH &amp; DISCOVERY</SectionLabel>
           <h2 className={h2} style={{ fontFamily: "var(--font-bricolage)" }}>
-            Reconciliation is{" "}
+            Trust is{" "}
             <span className="gradient-warm">the product, not the lookup</span>
           </h2>
-          <div className="flex flex-wrap gap-4">
-            <InsightCard title="Facilities &amp; physicians" accent="Target customer" accentColor="#7c5cff">
-              Hospitals, group practices and staffing agencies verifying hires, and physicians looking for their next role.
-            </InsightCard>
-            <InsightCard title="Rising compliance scrutiny" accent="Why now" accentColor="#ff6b9a">
-              NCQA and Joint Commission pressure demands defensible, auditable decisions, not black-box automation.
-            </InsightCard>
-            <InsightCard title="Free to enterprise" accent="Business model" accentColor="#4fc3ff">
-              3 free runs, then pay-as-you-go to enterprise plans, with roster monitoring as recurring revenue.
-            </InsightCard>
+          <div className="flex flex-wrap items-center gap-x-10 gap-y-4">
+            <div className="flex items-baseline gap-4">
+              <span className="text-[5rem] font-bold leading-none gradient-warm" style={{ fontFamily: "var(--font-bricolage)" }}>19</span>
+              <span className="text-[#010101] text-2xl font-bold max-w-[220px] leading-tight" style={{ fontFamily: "var(--font-bricolage)" }}>
+                Healthcare professionals interviewed
+              </span>
+            </div>
+            <p className={`${lead} flex-1 min-w-[280px]`} style={{ fontFamily: "var(--font-jakarta)", fontWeight: 500 }}>
+              7 hospitals, 5 staffing agencies, and 7 physicians revealed workflow pain-points and how credential
+              verification breaks down across different sides of the hiring ecosystem.
+            </p>
           </div>
-          <Shot src="/images/ca-v2-early-access.jpg" alt="Early access plans page"
-            caption="Early Access plans: Free, Pay as you go, Starter, Pro and Enterprise, priced with each early-access facility." />
-          <BriefLink href="/credentialai-concept-brief.html">
-            Full concept brief: problem, customer, business model
-          </BriefLink>
+          <div className="flex flex-wrap gap-4">
+            <StatCard value="70%" label="of Facilities Said Verification Is Too Slow, Wasting 8-9 Hours" gradient="gradient-warm" />
+            <StatCard value="68%" label="of Providers Want Less Fragmented, More Centralized Workflows" gradient="gradient-warm-reverse" />
+            <StatCard value="56%" label="of Physicians Say Job Searching Is Too Tedious & Slow" gradient="gradient-cool" />
+          </div>
+          <Shot src="/images/ca-v2-research.jpg"
+            alt="Research synthesis: 19 participants across hospitals, staffing agencies and physicians, their quotes, key insights and six themes" />
         </section>
 
         {/* The Agentic Approach */}
