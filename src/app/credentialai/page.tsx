@@ -91,21 +91,6 @@ function SolutionCard({ title, accent, accentColor, bullets }: {
   );
 }
 
-function FeatureCard({ title, dark, bullets }: { title: string; dark?: boolean; bullets: string[] }) {
-  return (
-    <div
-      className={`flex-1 min-w-[260px] rounded-[20px] p-8 flex flex-col gap-4 ${dark ? "" : "border border-[#d4d4d4]"}`}
-      style={{ background: dark ? "#111111" : "#ffffff", boxShadow: dark ? "none" : "0 0 20px rgba(0,0,0,0.04)" }}
-    >
-      <p className={`text-xl font-bold ${dark ? "text-white" : "text-[#010101]"}`} style={{ fontFamily: "var(--font-bricolage)" }}>{title}</p>
-      <ul className={`list-disc pl-6 text-lg leading-7 space-y-2 ${dark ? "text-white/70" : "text-[#6b7280]"}`}
-        style={{ fontFamily: "var(--font-jakarta)", fontWeight: 500 }}>
-        {bullets.map((b) => <li key={b}>{b}</li>)}
-      </ul>
-    </div>
-  );
-}
-
 function InfoCard({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <div className="bg-white border border-[#d4d4d4] rounded-[20px] flex-1 min-w-[240px] p-6 flex flex-col gap-2"
@@ -175,6 +160,17 @@ function Shot({ src, alt, caption }: { src: string; alt: string; caption?: strin
 const h2 = "text-[clamp(2.5rem,5vw,3.75rem)] font-extrabold leading-[1.15]";
 const lead = "text-[#6a6a6a] text-lg leading-7 max-w-[780px]";
 const bold = "font-extrabold text-[#6a6a6a]";
+
+const roleRows = [
+  { stage: "Research", owned: "Competitive teardown and market scoping, user research, concept validation",
+    ai: "Synthesized competitors, funding news and review complaints into a concept brief" },
+  { stage: "Architecture", owned: "Coordinator agent, verification sub-agents, API data sources, AI matching on both sides of the market",
+    ai: "Wrote and wired the tool-calling backend against live government APIs" },
+  { stage: "Design", owned: "Trust surfaces, verdict tiers, reports, user journeys, UI & brand",
+    ai: "Design tools connected to the live site over MCP, so designs matched what was built" },
+  { stage: "Prototypes & build", owned: "Usability-tested prototypes, front & back-end site build",
+    ai: "Prototypes in hours, not weeks; 60+ pull requests shipped" },
+];
 
 export default function Credentialai() {
   return (
@@ -275,30 +271,36 @@ export default function Credentialai() {
           </div>
         </section>
 
-        {/* Role & Leadership */}
+        {/* Role & Approach */}
         <section className="w-full max-w-[1200px] flex flex-col gap-10">
-          <SectionLabel>ROLE &amp; LEADERSHIP</SectionLabel>
+          <SectionLabel>ROLE &amp; APPROACH</SectionLabel>
           <h2 className={h2} style={{ fontFamily: "var(--font-bricolage)" }}>
-            0-1 Product Design flow, research, architecture, design,{" "}
-            <span className="gradient-cool">prototypes and final site build</span>
+            0-1 product design,{" "}
+            <span className="gradient-cool">directed with agentic AI</span>
           </h2>
-          <div className="flex flex-col gap-6">
-            <NumberedItem n="01">
-              <span className={bold}>Research</span>
-              {`: competitive teardown and market scoping, user research, concept validation`}
-            </NumberedItem>
-            <NumberedItem n="02">
-              <span className={bold}>Architecture</span>
-              {`: coordinator agent, verification sub-agents, API data sources, AI matching on both sides of the market`}
-            </NumberedItem>
-            <NumberedItem n="03">
-              <span className={bold}>Design</span>
-              {`: trust surfaces, verdict tiers, reports, user journeys, UI & brand`}
-            </NumberedItem>
-            <NumberedItem n="04">
-              <span className={bold}>Prototypes &amp; final site</span>
-              {`: usability-tested prototypes, front & back-end site build`}
-            </NumberedItem>
+          <p className={lead} style={{ fontFamily: "var(--font-jakarta)", fontWeight: 500 }}>
+            I led every stage, from research to the final site build, and directed Claude like a team against a spec.
+          </p>
+          <div className="w-full bg-white border border-[#d4d4d4] rounded-[20px] overflow-hidden"
+            style={{ boxShadow: "0 0 20px rgba(0,0,0,0.04)", fontFamily: "var(--font-jakarta)" }}>
+            <div className="hidden md:grid grid-cols-[200px_1fr_1fr] gap-8 px-8 py-4 bg-[#fafafa] border-b border-[#e5e5e5]">
+              {["STAGE", "WHAT I OWNED", "HOW I USED AI"].map((h) => (
+                <span key={h} className="text-sm tracking-[2px] text-[#7c5cff]" style={{ fontFamily: "var(--font-jetbrains)", fontWeight: 600 }}>{h}</span>
+              ))}
+            </div>
+            {roleRows.map((r) => (
+              <div key={r.stage} className="grid md:grid-cols-[200px_1fr_1fr] gap-2 md:gap-8 px-6 md:px-8 py-6 border-b border-[#e5e5e5] last:border-b-0">
+                <p className="text-[#010101] text-xl font-bold" style={{ fontFamily: "var(--font-bricolage)" }}>{r.stage}</p>
+                <p className="text-[#4a5266] text-lg leading-7">
+                  <span className="md:hidden text-xs tracking-[2px] text-[#7c5cff] block mb-1" style={{ fontFamily: "var(--font-jetbrains)", fontWeight: 600 }}>WHAT I OWNED</span>
+                  {r.owned}
+                </p>
+                <p className="text-[#6b7280] text-lg leading-7">
+                  <span className="md:hidden text-xs tracking-[2px] text-[#7c5cff] block mb-1 mt-2" style={{ fontFamily: "var(--font-jetbrains)", fontWeight: 600 }}>HOW I USED AI</span>
+                  {r.ai}
+                </p>
+              </div>
+            ))}
           </div>
         </section>
 
@@ -382,55 +384,6 @@ export default function Credentialai() {
               image="/images/ca-proto-figma.png"
               href="/prototype-credentialai-figma/index.html"
             />
-          </div>
-        </section>
-
-        {/* The Agentic Approach */}
-        <section className="w-full max-w-[1200px] flex flex-col gap-10">
-          <SectionLabel>THE AGENTIC APPROACH</SectionLabel>
-          <h2 className={h2} style={{ fontFamily: "var(--font-bricolage)" }}>
-            Agentic AI, directed,{" "}
-            <span className="gradient-cool">not just prompted</span>
-          </h2>
-          <p className={lead} style={{ fontFamily: "var(--font-jakarta)", fontWeight: 500 }}>
-            Agentic AI was the operating method for the whole build: I directed Claude like a team against a spec,
-            from research to production.
-          </p>
-          <div className="flex flex-col gap-6">
-            <NumberedItem n="01">
-              <span className={bold}>Business strategy &amp; research</span>
-              {`: competitor teardown, funding and review-mined complaints to find the wedge`}
-            </NumberedItem>
-            <NumberedItem n="02">
-              <span className={bold}>Backend architecture</span>
-              {`: coordinator agent with identity-first sequencing, on Claude API + Tool Runner`}
-            </NumberedItem>
-            <NumberedItem n="03">
-              <span className={bold}>API &amp; systems integration</span>
-              {`: NPPES, HHS-OIG, state license boards, License Verify, Google Jobs, Supabase and Resend`}
-            </NumberedItem>
-            <NumberedItem n="04">
-              <span className={bold}>Prototypes &amp; workflows</span>
-              {`: disposable Lovable and Figma Make prototypes to test ideas in hours`}
-            </NumberedItem>
-            <NumberedItem n="05">
-              <span className={bold}>Design tooling via MCP</span>
-              {`: design tools reading and writing the same live system, not static mockups`}
-            </NumberedItem>
-          </div>
-          <div className="flex flex-wrap gap-4">
-            <FeatureCard title="What I directed" bullets={[
-              "The market wedge and concept, before any code",
-              "The architecture, data sources and vendor choices",
-              "Where agents act alone, and where a human reviews",
-              "What to prototype fast versus build for real",
-            ]} />
-            <FeatureCard title="What agentic AI executed" dark bullets={[
-              "Research synthesized into a concept brief",
-              "The tool-calling backend against live APIs",
-              "Working prototypes in hours, not weeks",
-              "Screenshots, diagrams and docs kept in sync",
-            ]} />
           </div>
         </section>
 
