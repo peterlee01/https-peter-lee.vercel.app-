@@ -273,10 +273,6 @@ export default function Credentialai() {
             <StatCard value="30%" label="of Healthcare Orgs Still Verify Credentials Manually, Site by Site" gradient="gradient-warm-reverse" />
             <StatCard value="60%" label="of Providers Need 4+ Hours of Primary-Source Verification" gradient="gradient-cool" />
           </div>
-          <p className="text-[#7c5cff] text-2xl font-bold max-w-[780px] leading-normal"
-            style={{ fontFamily: "var(--font-bricolage)" }}>
-            Together: a fragmented, manual process consuming hours of valuable staff time, and a compelling case for Credentialai.
-          </p>
         </section>
 
         {/* Role & Leadership */}
@@ -315,14 +311,14 @@ export default function Credentialai() {
           </h2>
           <div className="flex flex-wrap items-center gap-x-10 gap-y-4">
             <div className="flex items-baseline gap-4">
-              <span className="text-[5rem] font-bold leading-none gradient-warm" style={{ fontFamily: "var(--font-bricolage)" }}>19</span>
+              <span className="text-[55px] font-bold leading-none text-[#2f6fe4]" style={{ fontFamily: "var(--font-bricolage)" }}>19</span>
               <span className="text-[#010101] text-2xl font-bold max-w-[220px] leading-tight" style={{ fontFamily: "var(--font-bricolage)" }}>
                 Healthcare professionals interviewed
               </span>
             </div>
             <p className={`${lead} flex-1 min-w-[280px]`} style={{ fontFamily: "var(--font-jakarta)", fontWeight: 500 }}>
-              7 hospitals, 5 staffing agencies, and 7 physicians revealed workflow pain-points and how credential
-              verification breaks down across different sides of the hiring ecosystem.
+              I interviewed 7 hospitals, 5 staffing agencies, and 7 physicians to understand their credential
+              verification &amp; hiring workflows and pain-points.
             </p>
           </div>
           <div className="flex flex-wrap gap-4">
@@ -332,6 +328,61 @@ export default function Credentialai() {
           </div>
           <Shot src="/images/ca-v2-research.jpg"
             alt="Research synthesis: 19 participants across hospitals, staffing agencies and physicians, their quotes, key insights and six themes" />
+        </section>
+
+        {/* Insights & Strategy */}
+        <section className="w-full max-w-[1200px] flex flex-col gap-10">
+          <SectionLabel>INSIGHTS &amp; STRATEGY</SectionLabel>
+          <h2 className={h2} style={{ fontFamily: "var(--font-bricolage)" }}>
+            Trust{" "}
+            <span className="gradient-cool">before the match</span>
+          </h2>
+          <p className={lead} style={{ fontFamily: "var(--font-jakarta)", fontWeight: 500 }}>
+            Our research found that credentialing was fragmented and manual: staff spent hours reconciling results
+            across disconnected sources, and that slowed hiring. Even after a physician was cleared, matching them to
+            the right facility was a separate manual step. That pointed to one opportunity: verify and match in a
+            single flow.
+          </p>
+          <div className="flex flex-wrap gap-4">
+            <SolutionCard title="Unified flow" accent="One run, start to finish" accentColor="#7c5cff"
+              bullets={["Identity, sanctions and license together", "Matches arrive with the verdict"]} />
+            <SolutionCard title="Transparent verification and trust" accent="Every verdict cited" accentColor="#ff6b9a"
+              bullets={["Each check names its source", "Unclear data goes to a person"]} />
+            <SolutionCard title="Automated AI matching" accent="Both sides of the market" accentColor="#4fc3ff"
+              bullets={["Facilities get verified physicians", "Physicians get facilities and jobs"]} />
+            <SolutionCard title="Simple UI" accent="One clear answer" accentColor="#4fc3ff"
+              bullets={["GO, NEEDS REVIEW or NO-GO", "Next steps for every result"]} />
+          </div>
+        </section>
+
+        {/* Validation & Prototyping */}
+        <section className="w-full max-w-[1200px] flex flex-col gap-10">
+          <SectionLabel>VALIDATION &amp; PROTOTYPING</SectionLabel>
+          <h2 className={h2} style={{ fontFamily: "var(--font-bricolage)" }}>
+            Two prototypes, one question:{" "}
+            <span className="gradient-warm">would users trust it?</span>
+          </h2>
+          <p className={lead} style={{ fontFamily: "var(--font-jakarta)", fontWeight: 500 }}>
+            I created 2 high-fidelity prototypes with different directions: a guided, step-by-step approach (Lovable),
+            and a unified dashboard (Figma Make), and ran usability tests. We discovered that users preferred the
+            faster, unified dashboard.
+          </p>
+          <div className="flex flex-wrap justify-center gap-6 w-full">
+            <ProtoCard
+              label="Prototype · Lovable"
+              title="Guided, step-by-step"
+              desc="A guided, step-by-step verification flow."
+              image="/images/ca-proto-lovable.png"
+              href="/prototype-credentialai-lovable/index.html"
+            />
+            <ProtoCard
+              label="Prototype · Figma Make"
+              title="Unified dashboard"
+              desc="A unified dashboard, preferred by users for speed."
+              image="/images/ca-proto-figma.png"
+              href="/prototype-credentialai-figma/index.html"
+            />
+          </div>
         </section>
 
         {/* The Agentic Approach */}
@@ -470,25 +521,6 @@ export default function Credentialai() {
           </div>
 
           <div className="w-full flex flex-col items-center gap-8">
-            <p className="text-sm tracking-[2px] text-[#a3a3a3] uppercase" style={{ fontFamily: "var(--font-jetbrains)", fontWeight: 500 }}>
-              Prototypes
-            </p>
-            <div className="flex flex-wrap justify-center gap-6 w-full">
-              <ProtoCard
-                label="Prototype · Lovable"
-                title="Reviewer & Marketing"
-                desc="Reviewer workflow and marketing site, tested with real users."
-                image="/images/ca-proto-lovable.png"
-                href="/prototype-credentialai-lovable/index.html"
-              />
-              <ProtoCard
-                label="Prototype · Figma Make"
-                title="Higher-Fidelity Design Exploration"
-                desc="Higher-fidelity visual and interaction exploration."
-                image="/images/ca-proto-figma.png"
-                href="/prototype-credentialai-figma/index.html"
-              />
-            </div>
             <a href="https://github.com/peterlee01/credentialai" target="_blank" rel="noopener noreferrer"
               className="flex items-center gap-3 px-8 py-4 rounded-full border-2 border-[#d4d4d4] text-[#4a5266] text-lg font-medium hover:border-[#7c5cff] hover:text-[#7c5cff] transition-colors duration-200"
               style={{ fontFamily: "var(--font-jakarta)" }}>
