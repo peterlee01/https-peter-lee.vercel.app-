@@ -489,71 +489,10 @@ export default function Credentialai() {
             <span className="gradient-warm">sequenced deliberately</span>
           </h2>
           <Shot src="/images/ca-v2-architecture.jpg" alt="Credentialai architecture: API layer, AI agents, data sources and platform" />
-          <div className="flex flex-wrap gap-4">
-            <SolutionCard title="Primary Source Verif." accent="Real, not scraped" accentColor="#7c5cff"
-              bullets={["NPPES identity first, then OIG sanctions", "Live licenses in 26 states"]} />
-            <SolutionCard title="AI Physician Matching" accent="For facilities" accentColor="#ff6b9a"
-              bullets={["Similar, pre-checked physicians", "Reasons and contact links"]} />
-            <SolutionCard title="AI Facility & Job Matching" accent="For physicians" accentColor="#4fc3ff"
-              bullets={["Facilities and open jobs", "Ranked by their preferences"]} />
-            <SolutionCard title="Accounts" accent="Email sign-in" accentColor="#4fc3ff"
-              bullets={["Facility run history and intros", "Physician verified profile"]} />
-            <SolutionCard title="Compliance Reporting" accent="Committee-ready" accentColor="#4fc3ff"
-              bullets={["PDF report for every run", "Cites every source used"]} />
-            <SolutionCard title="Guarded by Design" accent="Rules back the AI" accentColor="#4fc3ff"
-              bullets={["Rule check on every verdict", "Visitor limit caps API cost"]} />
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="flex flex-col gap-6">
-              <p className="text-2xl font-bold text-[#010101]" style={{ fontFamily: "var(--font-bricolage)" }}>For facilities</p>
-              <Shot src="/images/ca-v2-verify.jpg" alt="Verification result for a searched physician"
-                caption="Verify a named physician, with a cited verdict." />
-              <Shot src="/images/ca-v2-matches.jpg" alt="AI-matched physicians with contact links"
-                caption="AI-matched physicians, each with a reason and contact links." />
-              <Shot src="/images/ca-v2-facility.jpg" alt="Facility account dashboard"
-                caption="Facility account: usage, past runs and intro requests." />
-            </div>
-            <div className="flex flex-col gap-6">
-              <p className="text-2xl font-bold text-[#010101]" style={{ fontFamily: "var(--font-bricolage)" }}>For physicians</p>
-              <Shot src="/images/ca-v2-badge.jpg" alt="Verified badge" caption="A shareable verified badge." />
-              <Shot src="/images/ca-v2-jobs.jpg" alt="AI-matched facilities and open jobs"
-                caption="AI-matched facilities and open jobs, by preference." />
-              <Shot src="/images/ca-v2-profile.jpg" alt="Physician verified profile"
-                caption="Physician account: verified profile and report." />
-            </div>
-          </div>
-
-          <div className="w-full flex flex-col items-center gap-8">
-            <a href="https://github.com/peterlee01/credentialai" target="_blank" rel="noopener noreferrer"
-              className="flex items-center gap-3 px-8 py-4 rounded-full border-2 border-[#d4d4d4] text-[#4a5266] text-lg font-medium hover:border-[#7c5cff] hover:text-[#7c5cff] transition-colors duration-200"
-              style={{ fontFamily: "var(--font-jakarta)" }}>
-              View Source
-            </a>
-          </div>
-        </section>
-
-        {/* What's Next */}
-        <section className="w-full max-w-[1200px] flex flex-col gap-10">
-          <SectionLabel>WHAT&apos;S NEXT</SectionLabel>
-          <h2 className={h2} style={{ fontFamily: "var(--font-bricolage)" }}>
-            AI matching, scoped to{" "}
-            <span className="gradient-warm">what verification already earns</span>
-          </h2>
-          <p className={lead} style={{ fontFamily: "var(--font-jakarta)", fontWeight: 500 }}>
-            A teardown of the matching market (over $700M raised; Nomad Health wound down its marketplace) argued
-            against an open two-sided marketplace. So matching shipped narrowly: only verified physicians, inside
-            the same run, with no marketplace liquidity to build.
-          </p>
-          <div className="flex flex-col gap-6">
-            <NumberedItem n="01">Ongoing roster monitoring: scheduled license and sanctions rechecks with alerts</NumberedItem>
-            <NumberedItem n="02">NCQA-grade verification through a paid partner such as Verisys or CertifyOS</NumberedItem>
-            <NumberedItem n="03">Pilots with early-access facilities to measure review time against today&apos;s process</NumberedItem>
-          </div>
         </section>
 
         {/* Outcomes & Targets */}
-        <section className="w-full max-w-[1200px] flex flex-col gap-10 pb-32">
+        <section className="w-full max-w-[1200px] flex flex-col gap-10">
           <SectionLabel>OUTCOMES &amp; TARGETS</SectionLabel>
           <h2 className={h2} style={{ fontFamily: "var(--font-bricolage)" }}>
             What&apos;s shipped,{" "}
@@ -574,6 +513,30 @@ export default function Credentialai() {
               style={{ fontFamily: "var(--font-jakarta)" }}>
               Try the Live Product
             </a>
+          </div>
+        </section>
+
+        {/* What's Next */}
+        <section className="w-full max-w-[1200px] flex flex-col gap-10 pb-32">
+          <SectionLabel>WHAT&apos;S NEXT</SectionLabel>
+          <h2 className={h2} style={{ fontFamily: "var(--font-bricolage)" }}>
+            AI matching, scoped to{" "}
+            <span className="gradient-warm">what verification already earns</span>
+          </h2>
+          <p className={lead} style={{ fontFamily: "var(--font-jakarta)", fontWeight: 500 }}>
+            A teardown of the matching market (over $700M raised; Nomad Health wound down its marketplace) argued
+            against an open two-sided marketplace, so matching shipped inside verification instead. Facilities now get
+            AI-matched physicians with every check: similar, pre-verified physicians nearby, each with a plain-language
+            reason, contact links and one-click intro requests. Physicians get AI-matched facilities and open jobs,
+            ranked by their own preferences, with staffing agencies filtered out. Every match is verified first, and
+            next steps come with every verdict.
+          </p>
+          <div className="flex flex-col gap-6">
+            <NumberedItem n="01">Ongoing roster monitoring: scheduled license and sanctions rechecks with alerts</NumberedItem>
+            <NumberedItem n="02">NCQA-grade verification through a paid partner such as Verisys or CertifyOS</NumberedItem>
+            <NumberedItem n="03">Pilots with early-access facilities to measure review time against today&apos;s process</NumberedItem>
+            <NumberedItem n="04">Bulk upload verifications: upload a roster as a CSV, verify every physician in one batch, and download the results with a report for each</NumberedItem>
+            <NumberedItem n="05">Facility dashboard: a roster view with each physician&apos;s status at a glance, a calendar of upcoming license expirations, alerts when a status changes, saved shortlists of AI-matched physicians, intro request tracking, team seats with roles, and exportable reports for credentialing committees and audits</NumberedItem>
           </div>
         </section>
 
