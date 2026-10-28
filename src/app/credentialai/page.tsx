@@ -91,16 +91,6 @@ function SolutionCard({ title, accent, accentColor, bullets }: {
   );
 }
 
-function InfoCard({ title, children }: { title: string; children: React.ReactNode }) {
-  return (
-    <div className="bg-white border border-[#d4d4d4] rounded-[20px] flex-1 min-w-[240px] p-6 flex flex-col gap-2"
-      style={{ boxShadow: "0 0 20px rgba(0,0,0,0.04)" }}>
-      <p className="text-[#010101] text-xl font-bold" style={{ fontFamily: "var(--font-bricolage)" }}>{title}</p>
-      <p className="text-[#6b7280] text-lg leading-7" style={{ fontFamily: "var(--font-jakarta)", fontWeight: 500 }}>{children}</p>
-    </div>
-  );
-}
-
 function ProtoCard({ image, gradient, label, title, desc, href }: {
   image?: string; gradient?: string; label: string; title: string; desc: string; href: string
 }) {
@@ -159,7 +149,44 @@ function Shot({ src, alt, caption }: { src: string; alt: string; caption?: strin
 
 const h2 = "text-[clamp(2.5rem,5vw,3.75rem)] font-extrabold leading-[1.15]";
 const lead = "text-[#6a6a6a] text-lg leading-7 max-w-[780px]";
-const bold = "font-extrabold text-[#6a6a6a]";
+
+const statusLegend = [
+  { name: "Teal", label: "Verified", color: "#00d4aa" },
+  { name: "Amber", label: "Pending or needs attention", color: "#edb200" },
+  { name: "Red", label: "Expired or failed", color: "#fb2c36" },
+  { name: "Blue", label: "AI match or recommendation", color: "#4a9eff" },
+];
+
+function DecisionRow({ n, label, title, image, alt, note, sample, reverse, extra, children }: {
+  n: string; label: string; title: string; image: string; alt: string; note: string;
+  sample?: boolean; reverse?: boolean; extra?: React.ReactNode; children: React.ReactNode
+}) {
+  return (
+    <li className="grid md:grid-cols-2 gap-8 md:gap-14 items-center py-12 border-t border-[#e5e5e5] first:border-t-0 first:pt-2">
+      <div className={`flex flex-col gap-4 ${reverse ? "md:order-2" : ""}`}>
+        <span className="text-[#7c5cff] text-sm tracking-[2px]" style={{ fontFamily: "var(--font-jetbrains)", fontWeight: 600 }}>
+          {n} — {label}
+        </span>
+        <h3 className="text-[#010101] text-[clamp(1.6rem,2.6vw,2.1rem)] font-extrabold leading-tight" style={{ fontFamily: "var(--font-bricolage)" }}>
+          {title}
+        </h3>
+        <p className="text-[#6a6a6a] text-lg leading-7" style={{ fontFamily: "var(--font-jakarta)", fontWeight: 500 }}>{children}</p>
+        {extra}
+      </div>
+      <figure className="flex flex-col gap-3">
+        <div className="w-full rounded-[16px] overflow-hidden border border-[#e5e5e5]">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={image} alt={alt} loading="lazy" width={1600} height={1200} className="w-full h-auto block" />
+        </div>
+        <figcaption className="flex items-center gap-3 text-[#4a5266] text-base" style={{ fontFamily: "var(--font-jakarta)", fontWeight: 600 }}>
+          <span aria-hidden="true" className="h-px w-6 shrink-0" style={{ background: warmGradient }} />
+          <span>{note}</span>
+          {sample && <span className="ml-auto text-xs tracking-[1px] text-[#8a8a8a]" style={{ fontFamily: "var(--font-jetbrains)", fontWeight: 500 }}>SAMPLE DATA</span>}
+        </figcaption>
+      </figure>
+    </li>
+  );
+}
 
 const roleRows = [
   { stage: "Research", owned: "Competitive teardown and market scoping, user research, concept validation",
@@ -385,6 +412,13 @@ export default function Credentialai() {
               href="/prototype-credentialai-figma/index.html"
             />
           </div>
+          <p className="text-[#010101] text-2xl font-bold pt-4" style={{ fontFamily: "var(--font-bricolage)" }}>What we learned</p>
+          <div className="flex flex-col gap-6">
+            <NumberedItem n="01">All users appreciated combining verification and AI matching, saving time and context switching.</NumberedItem>
+            <NumberedItem n="02">Speed beat guidance. Credentialing staff are experts, so a step-by-step guide adds clicks without adding clarity. They preferred a single run that returns the verdict, each check with its source, AI matches and a PDF report.</NumberedItem>
+            <NumberedItem n="03">Transparent verification builds trust. Show verification sources, timestamps, expiration dates, outstanding checks, and clear explanations for any flagged credentials.</NumberedItem>
+            <NumberedItem n="04">The physician side still uses light steps: sign in, claim your NPI, set preferences, then matches. That&apos;s where guidance helped.</NumberedItem>
+          </div>
         </section>
 
         {/* Design Decisions */}
@@ -392,39 +426,56 @@ export default function Credentialai() {
           <SectionLabel>DESIGN DECISIONS</SectionLabel>
           <h2 className={h2} style={{ fontFamily: "var(--font-bricolage)" }}>
             Designing the trust surfaces,{" "}
-            <span className="gradient-warm">not just the pipeline</span>
+            <span className="gradient-warm">not just the pipeline.</span>
           </h2>
-          <div className="flex flex-col gap-6">
-            <NumberedItem n="01">
-              <span className={bold}>UX</span>
-              {`: lead with value and proof, then let users run a real verification for free`}
-            </NumberedItem>
-            <NumberedItem n="02">
-              <span className={bold}>UI</span>
-              {`: near-black, infrastructure-grade surfaces; teal for verified, blue for AI matching`}
-            </NumberedItem>
-            <NumberedItem n="03">
-              <span className={bold}>Branding</span>
-              {`: modern and credible, neither overly clinical nor overly futuristic`}
-            </NumberedItem>
-          </div>
-          <div className="grid md:grid-cols-[1fr_1.1fr] gap-8 items-start">
-            <Shot src="/images/ca-v2-report.jpg" alt="Downloadable verification report"
-              caption="Every run produces a PDF report that cites each source." />
-            <div className="flex flex-col gap-4">
-              <InfoCard title="Confidence tiering">
-                GO / NEEDS REVIEW / NO-GO. Ambiguous identity or missing license data never rounds up to GO.
-              </InfoCard>
-              <InfoCard title="Source citation per data point">
-                Each verdict names the record behind it: NPPES match, OIG result, license board and date.
-              </InfoCard>
-              <InfoCard title="Audit trail by default">
-                Every run is saved with its report, so a verdict can be reopened and reviewed later.
-              </InfoCard>
-            </div>
-          </div>
-          <Shot src="/images/ca-v2-mobile.jpg" alt="Credentialai on mobile"
-            caption="Fully responsive: verification, matches and jobs on a phone." />
+          <p className={lead} style={{ fontFamily: "var(--font-jakarta)", fontWeight: 500 }}>
+            Every design decision was shaped by one goal: make credential verification feel transparent, efficient,
+            and trustworthy, from the first interaction to the final hiring decision.
+          </p>
+          <ol className="flex flex-col">
+            <DecisionRow n="01" label="UX STRATEGY" title="Show the value before asking for commitment."
+              image="/images/ca-dd-ux.jpg"
+              alt="Credentialai home page: the value proposition beside the verification form, with the Facilities and Physicians tabs and the Run free verification button outlined"
+              note="Value first. Clear next steps.">
+              Lead with a clear value proposition, then guide users through verification with a focused, low-friction
+              workflow. Make the next action and progress visible so users understand what the product does and what to
+              expect.
+            </DecisionRow>
+            <DecisionRow n="02" label="VISUAL SYSTEM" title="Make trust visible at a glance." reverse
+              image="/images/ca-dd-status.jpg"
+              alt="A verification card with teal, red and amber status badges for identity, sanctions and license, beside an AI match card with a blue match score"
+              note="Status at a glance." sample
+              extra={
+                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2 pt-1" aria-label="Status colors">
+                  {statusLegend.map((l) => (
+                    <li key={l.label} className="flex items-start gap-2 text-[#4a5266] text-base">
+                      <span aria-hidden="true" className="w-2.5 h-2.5 rounded-full shrink-0 mt-2" style={{ background: l.color }} />
+                      <span><span className="font-bold text-[#010101]">{l.name}</span> · {l.label}</span>
+                    </li>
+                  ))}
+                </ul>
+              }>
+              Use a consistent status system to distinguish verified credentials from pending, expired, or missing
+              information. Reserve teal for verified states and blue for AI-powered matching, so confirmed facts never
+              look like recommendations.
+            </DecisionRow>
+            <DecisionRow n="03" label="AI EXPERIENCE" title="Explain the recommendation. Keep the decision human."
+              image="/images/ca-dd-ai.jpg"
+              alt="AI-matched physician cards, each with a match score, a plain-language reason, contact actions, and one flagged as License needs review"
+              note="Explainable recommendations. Human control." sample>
+              Show why a physician matches by connecting the recommendation to specialty, location, availability and
+              verification status. Surface gaps or unverified credentials clearly, while leaving the final hiring
+              decision with the user.
+            </DecisionRow>
+            <DecisionRow n="04" label="BRAND IDENTITY" title="Credible by design. Modern by nature." reverse
+              image="/images/ca-dd-brand.jpg"
+              alt="Credentialai brand in use: the logo, Space Grotesk, Inter and mono type, the color tokens, and the primary button with status chips"
+              note="Healthcare credibility. Modern AI.">
+              Balance the rigor of healthcare infrastructure with the clarity of modern AI software. A restrained dark
+              palette, deliberate typography and consistent components communicate confidence without feeling overly
+              clinical or futuristic.
+            </DecisionRow>
+          </ol>
           <BriefLink href="/credentialai-style-guide.html">
             Full style guide: logo, color, type, components
           </BriefLink>
