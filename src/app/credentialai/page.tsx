@@ -536,7 +536,7 @@ export default function Credentialai() {
             <NumberedItem n="02">NCQA-grade verification through a paid partner such as Verisys or CertifyOS</NumberedItem>
             <NumberedItem n="03">Pilots with early-access facilities to measure review time against today&apos;s process</NumberedItem>
             <NumberedItem n="04">Bulk upload verifications: upload a roster as a CSV, verify every physician in one batch, and download the results with a report for each</NumberedItem>
-            <NumberedItem n="05">Facility dashboard: a roster view with each physician&apos;s status at a glance, a calendar of upcoming license expirations, alerts when a status changes, saved shortlists of AI-matched physicians, intro request tracking, team seats with roles, and exportable reports for credentialing committees and audits</NumberedItem>
+            <NumberedItem n="05">Facility dashboard: a roster view with each physician&apos;s status at a glance, a license expiration calendar with alerts, and exportable reports for credentialing committees and audits</NumberedItem>
           </div>
         </section>
 
