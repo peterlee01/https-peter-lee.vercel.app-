@@ -157,9 +157,9 @@ const statusLegend = [
   { name: "Blue", label: "AI match or recommendation", color: "#4a9eff" },
 ];
 
-function DecisionRow({ n, label, title, image, alt, note, sample, reverse, extra, children }: {
-  n: string; label: string; title: string; image: string; alt: string; note: string;
-  sample?: boolean; reverse?: boolean; extra?: React.ReactNode; children: React.ReactNode
+function DecisionRow({ n, label, title, image, alt, reverse, extra, children }: {
+  n: string; label: string; title: string; image: string; alt: string;
+  reverse?: boolean; extra?: React.ReactNode; children: React.ReactNode
 }) {
   return (
     <li className="grid md:grid-cols-2 gap-8 md:gap-14 items-center py-12 border-t border-[#e5e5e5] first:border-t-0 first:pt-2">
@@ -173,16 +173,11 @@ function DecisionRow({ n, label, title, image, alt, note, sample, reverse, extra
         <p className="text-[#6a6a6a] text-lg leading-7" style={{ fontFamily: "var(--font-jakarta)", fontWeight: 500 }}>{children}</p>
         {extra}
       </div>
-      <figure className={`flex flex-col gap-3 w-full md:w-[70%] ${reverse ? "md:justify-self-start" : "md:justify-self-end"}`}>
+      <figure className={`w-full md:w-[70%] ${reverse ? "md:justify-self-start" : "md:justify-self-end"}`}>
         <div className="w-full rounded-[16px] overflow-hidden border border-[#e5e5e5]">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={image} alt={alt} loading="lazy" width={1600} height={1200} className="w-full h-auto block" />
         </div>
-        <figcaption className="flex items-center gap-3 text-[#4a5266] text-base" style={{ fontFamily: "var(--font-jakarta)", fontWeight: 600 }}>
-          <span aria-hidden="true" className="h-px w-6 shrink-0" style={{ background: warmGradient }} />
-          <span>{note}</span>
-          {sample && <span className="ml-auto text-xs tracking-[1px] text-[#8a8a8a]" style={{ fontFamily: "var(--font-jetbrains)", fontWeight: 500 }}>SAMPLE DATA</span>}
-        </figcaption>
       </figure>
     </li>
   );
@@ -435,8 +430,7 @@ export default function Credentialai() {
           <ol className="flex flex-col">
             <DecisionRow n="01" label="UX STRATEGY" title="Show the value before asking for commitment."
               image="/images/ca-dd-ux.jpg"
-              alt="Credentialai home page: the value proposition beside the verification form, with the Facilities and Physicians tabs and the Run free verification button outlined"
-              note="Value first. Clear next steps.">
+              alt="Credentialai home page: the value proposition beside the verification form, with the Facilities and Physicians tabs and the Run free verification button outlined">
               Lead with a clear value proposition, then guide users through verification with a focused, low-friction
               workflow. Make the next action and progress visible so users understand what the product does and what to
               expect.
@@ -444,7 +438,6 @@ export default function Credentialai() {
             <DecisionRow n="02" label="VISUAL SYSTEM" title="Make trust visible at a glance." reverse
               image="/images/ca-dd-status.jpg"
               alt="A verification card with teal, red and amber status badges for identity, sanctions and license, beside an AI match card with a blue match score"
-              note="Status at a glance." sample
               extra={
                 <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2 pt-1" aria-label="Status colors">
                   {statusLegend.map((l) => (
@@ -461,16 +454,14 @@ export default function Credentialai() {
             </DecisionRow>
             <DecisionRow n="03" label="AI EXPERIENCE" title="Explain the recommendation. Keep the decision human."
               image="/images/ca-dd-ai.jpg"
-              alt="AI-matched physician cards, each with a match score, a plain-language reason, contact actions, and one flagged as License needs review"
-              note="Explainable recommendations. Human control." sample>
+              alt="AI-matched physician cards, each with a match score, a plain-language reason, contact actions, and one flagged as License needs review">
               Show why a physician matches by connecting the recommendation to specialty, location, availability and
               verification status. Surface gaps or unverified credentials clearly, while leaving the final hiring
               decision with the user.
             </DecisionRow>
             <DecisionRow n="04" label="BRAND IDENTITY" title="Credible by design. Modern by nature." reverse
               image="/images/ca-dd-brand.jpg"
-              alt="Credentialai brand in use: the logo, Space Grotesk, Inter and mono type, the color tokens, and the primary button with status chips"
-              note="Healthcare credibility. Modern AI.">
+              alt="Credentialai brand in use: the logo, Space Grotesk, Inter and mono type, the color tokens, and the primary button with status chips">
               Balance the rigor of healthcare infrastructure with the clarity of modern AI software. A restrained dark
               palette, deliberate typography and consistent components communicate confidence without feeling overly
               clinical or futuristic.
