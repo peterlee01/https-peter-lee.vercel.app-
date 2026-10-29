@@ -482,10 +482,19 @@ export default function Credentialai() {
           <Shot src="/images/ca-fd-home.jpg"
             alt="Credentialai home page: the value proposition, the verification form with Facilities and Physicians tabs, and the headline stats"
             caption="The live site: value first, with verification one step away." />
-          <div className="w-full max-w-[820px] self-center">
-            <Shot src="/images/ca-fd-results.jpg"
-              alt="A GO verdict with identity, sanctions and license checks, an explanation and a What to do next checklist, beside a list of AI-matched physicians with match scores and reasons"
-              caption="A verdict result: each check with its source, next steps, and AI-matched physicians. Sample data." />
+          <div className="grid md:grid-cols-2 gap-8 items-start">
+            <div className="flex flex-col gap-4">
+              <p className="text-2xl font-bold text-[#010101]" style={{ fontFamily: "var(--font-bricolage)" }}>For facilities</p>
+              <Shot src="/images/ca-fd-facility.jpg"
+                alt="A facility's verdict result: a GO verdict with identity, sanctions and license checks, an explanation and next steps, followed by a list of AI-matched physicians with match scores, reasons and contact links"
+                caption="Verify a physician: each check with its source, next steps, and AI-matched physicians. Sample data." />
+            </div>
+            <div className="flex flex-col gap-4">
+              <p className="text-2xl font-bold text-[#010101]" style={{ fontFamily: "var(--font-bricolage)" }}>For physicians</p>
+              <Shot src="/images/ca-fd-physician.jpg"
+                alt="A physician's job search result: AI-matched employers with open roles, pay and match scores, followed by the physician's GO verdict with next steps"
+                caption="Find a role: AI-matched jobs ranked by preference, and a verified profile to share. Sample data." />
+            </div>
           </div>
           <Shot src="/images/ca-v2-architecture.jpg" alt="Credentialai architecture: API layer, AI agents, data sources and platform"
             caption="How Credentialai works under the hood." />
