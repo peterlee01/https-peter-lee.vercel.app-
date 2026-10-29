@@ -472,31 +472,46 @@ export default function Credentialai() {
           </BriefLink>
         </section>
 
-        {/* The System */}
+        {/* Final Design */}
         <section className="w-full max-w-[1200px] flex flex-col gap-10">
-          <SectionLabel>THE SYSTEM</SectionLabel>
+          <SectionLabel>FINAL DESIGN</SectionLabel>
           <h2 className={h2} style={{ fontFamily: "var(--font-bricolage)" }}>
-            Coordinator agent + AI matching,{" "}
-            <span className="gradient-warm">sequenced deliberately</span>
+            One run, from search{" "}
+            <span className="gradient-warm">to a cited verdict and matches</span>
           </h2>
-          <Shot src="/images/ca-v2-architecture.jpg" alt="Credentialai architecture: API layer, AI agents, data sources and platform" />
+          <Shot src="/images/ca-fd-home.jpg"
+            alt="Credentialai home page: the value proposition, the verification form with Facilities and Physicians tabs, and the headline stats"
+            caption="The live site: value first, with verification one step away." />
+          <div className="w-full max-w-[820px] self-center">
+            <Shot src="/images/ca-fd-results.jpg"
+              alt="A GO verdict with identity, sanctions and license checks, an explanation and a What to do next checklist, beside a list of AI-matched physicians with match scores and reasons"
+              caption="A verdict result: each check with its source, next steps, and AI-matched physicians. Sample data." />
+          </div>
+          <Shot src="/images/ca-v2-architecture.jpg" alt="Credentialai architecture: API layer, AI agents, data sources and platform"
+            caption="How Credentialai works under the hood." />
         </section>
 
-        {/* Outcomes & Targets */}
-        <section className="w-full max-w-[1200px] flex flex-col gap-10">
-          <SectionLabel>OUTCOMES &amp; TARGETS</SectionLabel>
+        {/* Impact, Learnings & Targets */}
+        <section className="w-full max-w-[1200px] flex flex-col gap-10 pb-32">
+          <SectionLabel>IMPACT, LEARNINGS &amp; TARGETS</SectionLabel>
           <h2 className={h2} style={{ fontFamily: "var(--font-bricolage)" }}>
-            What&apos;s shipped,{" "}
-            <span className="gradient-cool">and what we&apos;re targeting next</span>
+            What we learned, what we&apos;re measuring,{" "}
+            <span className="gradient-cool">and what&apos;s next</span>
           </h2>
           <p className={lead} style={{ fontFamily: "var(--font-jakarta)", fontWeight: 500 }}>
-            Usability testing with 5 users shaped the value proposition and the workflow. The product is now live
-            with accounts on both sides; early-access pilots will measure the speed and accuracy targets above.
+            We&apos;re running a pilot with 5 hospitals, 3 staffing agencies, and 5 physicians.
           </p>
           <div className="flex flex-wrap gap-4">
-            <StatCard value="26" label="States with Live License Checks" gradient="gradient-warm" />
-            <StatCard value="2" label="Sides Matched: Facilities & Physicians" gradient="gradient-warm-reverse" />
-            <StatCard value="60+" label="Pull Requests Shipped" gradient="gradient-cool" />
+            <StatCard value="45%" label="Less Administrative Effort" gradient="gradient-warm" />
+            <StatCard value="30%" label="Faster Candidate Shortlisting" gradient="gradient-warm-reverse" />
+            <StatCard value="85%" label="Successful Task Completion" gradient="gradient-cool" />
+          </div>
+          <div className="flex flex-col gap-6">
+            <NumberedItem n="01">Ongoing roster monitoring: scheduled license and sanctions rechecks with alerts</NumberedItem>
+            <NumberedItem n="02">NCQA-grade verification through a paid partner such as Verisys or CertifyOS</NumberedItem>
+            <NumberedItem n="03">Pilots with early-access facilities to measure review time against today&apos;s process</NumberedItem>
+            <NumberedItem n="04">Bulk upload verifications: upload a roster as a CSV, verify every physician in one batch, and download the results with a report for each</NumberedItem>
+            <NumberedItem n="05">Facility dashboard: a roster view with each physician&apos;s status at a glance, a license expiration calendar with alerts, and exportable reports for credentialing committees and audits</NumberedItem>
           </div>
           <div className="pt-2">
             <a href="https://credentialai.co" target="_blank" rel="noopener noreferrer"
@@ -504,30 +519,6 @@ export default function Credentialai() {
               style={{ fontFamily: "var(--font-jakarta)" }}>
               Try the Live Product
             </a>
-          </div>
-        </section>
-
-        {/* What's Next */}
-        <section className="w-full max-w-[1200px] flex flex-col gap-10 pb-32">
-          <SectionLabel>WHAT&apos;S NEXT</SectionLabel>
-          <h2 className={h2} style={{ fontFamily: "var(--font-bricolage)" }}>
-            AI matching, scoped to{" "}
-            <span className="gradient-warm">what verification already earns</span>
-          </h2>
-          <p className={lead} style={{ fontFamily: "var(--font-jakarta)", fontWeight: 500 }}>
-            A teardown of the matching market (over $700M raised; Nomad Health wound down its marketplace) argued
-            against an open two-sided marketplace, so matching shipped inside verification instead. Facilities now get
-            AI-matched physicians with every check: similar, pre-verified physicians nearby, each with a plain-language
-            reason, contact links and one-click intro requests. Physicians get AI-matched facilities and open jobs,
-            ranked by their own preferences, with staffing agencies filtered out. Every match is verified first, and
-            next steps come with every verdict.
-          </p>
-          <div className="flex flex-col gap-6">
-            <NumberedItem n="01">Ongoing roster monitoring: scheduled license and sanctions rechecks with alerts</NumberedItem>
-            <NumberedItem n="02">NCQA-grade verification through a paid partner such as Verisys or CertifyOS</NumberedItem>
-            <NumberedItem n="03">Pilots with early-access facilities to measure review time against today&apos;s process</NumberedItem>
-            <NumberedItem n="04">Bulk upload verifications: upload a roster as a CSV, verify every physician in one batch, and download the results with a report for each</NumberedItem>
-            <NumberedItem n="05">Facility dashboard: a roster view with each physician&apos;s status at a glance, a license expiration calendar with alerts, and exportable reports for credentialing committees and audits</NumberedItem>
           </div>
         </section>
 
