@@ -499,7 +499,7 @@ export default function Credentialai() {
             <span className="gradient-cool">and what&apos;s next</span>
           </h2>
           <p className={lead} style={{ fontFamily: "var(--font-jakarta)", fontWeight: 500 }}>
-            We&apos;re running a pilot with 5 hospitals, 3 staffing agencies, and 5 physicians.
+            We&apos;re running a pilot with 5 hospitals, 3 staffing agencies, and 5 physicians. Early results:
           </p>
           <div className="flex flex-wrap gap-4">
             <StatCard value="45%" label="Less Administrative Effort" gradient="gradient-warm" />
