@@ -173,7 +173,7 @@ function DecisionRow({ n, label, title, image, alt, note, sample, reverse, extra
         <p className="text-[#6a6a6a] text-lg leading-7" style={{ fontFamily: "var(--font-jakarta)", fontWeight: 500 }}>{children}</p>
         {extra}
       </div>
-      <figure className="flex flex-col gap-3">
+      <figure className={`flex flex-col gap-3 w-full md:w-[70%] ${reverse ? "md:justify-self-start" : "md:justify-self-end"}`}>
         <div className="w-full rounded-[16px] overflow-hidden border border-[#e5e5e5]">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={image} alt={alt} loading="lazy" width={1600} height={1200} className="w-full h-auto block" />
