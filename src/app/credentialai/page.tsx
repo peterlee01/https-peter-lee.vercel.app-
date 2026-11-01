@@ -64,13 +64,21 @@ function NumberedItem({ n, children }: { n: string; children: React.ReactNode })
   );
 }
 
-function StatCard({ value, label, gradient }: { value: string; label: string; gradient: string }) {
+function StatCard({ value, label, gradient, percent, source }: {
+  value: string; label: string; gradient: string; percent?: string; source?: string
+}) {
   return (
     <div className="bg-white border border-[#d4d4d4] rounded-[20px] flex-1 min-w-[240px] max-w-[284px] h-[260px] flex flex-col items-center justify-center gap-2 p-6 text-center"
       style={{ boxShadow: "0 0 20px rgba(0,0,0,0.04)" }}>
-      <span className={`${value.length > 4 ? "text-[3.5rem]" : "text-[4.5rem]"} font-bold leading-none whitespace-nowrap ${gradient}`}
+      <span className={`${value.length > 6 ? "text-[3rem]" : value.length > 4 ? "text-[3.5rem]" : "text-[4.5rem]"} font-bold leading-none whitespace-nowrap ${gradient}`}
         style={{ fontFamily: "var(--font-bricolage)" }}>{value}</span>
+      {percent && (
+        <span className="text-[#7c5cff] text-base tracking-[1px]" style={{ fontFamily: "var(--font-jetbrains)", fontWeight: 600 }}>{percent}</span>
+      )}
       <span className="text-[#6b7280] text-lg" style={{ fontFamily: "var(--font-jakarta)" }}>{label}</span>
+      {source && (
+        <span className="text-[#6b7280] text-sm" style={{ fontFamily: "var(--font-jakarta)", fontWeight: 500 }}>Source: {source}</span>
+      )}
     </div>
   );
 }
@@ -287,9 +295,9 @@ export default function Credentialai() {
             <NumberedItem n="03">No unified license API: each state board is its own system, the real infrastructure gap</NumberedItem>
           </div>
           <div className="flex flex-wrap gap-4 pt-4">
-            <StatCard value="90-120" label="Days a Full Credentialing Cycle Takes" gradient="gradient-warm" />
-            <StatCard value="30%" label="of Healthcare Orgs Still Verify Credentials Manually, Site by Site" gradient="gradient-warm-reverse" />
-            <StatCard value="60%" label="of Providers Need 4+ Hours of Primary-Source Verification" gradient="gradient-cool" />
+            <StatCard value="90-120" label="Days a Full Credentialing Cycle Takes" gradient="gradient-warm" source="AMA" />
+            <StatCard value="30%" label="of Healthcare Orgs Still Verify Credentials Manually, Site by Site" gradient="gradient-warm-reverse" source="2025 Medallion survey" />
+            <StatCard value="60%" label="of Providers Need 4+ Hours of Primary-Source Verification" gradient="gradient-cool" source="Medallion survey" />
           </div>
         </section>
 
@@ -346,10 +354,13 @@ export default function Credentialai() {
             </p>
           </div>
           <div className="flex flex-wrap gap-4">
-            <StatCard value="70%" label="of Facilities Said Verification Is Too Slow, Wasting 8-9 Hours" gradient="gradient-warm" />
-            <StatCard value="68%" label="of Providers Want Less Fragmented, More Centralized Workflows" gradient="gradient-warm-reverse" />
-            <StatCard value="56%" label="of Physicians Say Job Searching Is Too Tedious & Slow" gradient="gradient-cool" />
+            <StatCard value="9 of 12" percent="75%" label="Hospitals & Agencies Said Verification Is Too Slow, Losing 8–9 Hours per Physician" gradient="gradient-warm" />
+            <StatCard value="10 of 12" percent="83%" label="Hospitals & Agencies Want Less Fragmented, More Centralized Workflows" gradient="gradient-warm-reverse" />
+            <StatCard value="5 of 7" percent="71%" label="Physicians Say Job Searching Is Too Tedious & Slow" gradient="gradient-cool" />
           </div>
+          <p className="text-[#6b7280] text-base leading-6 -mt-4" style={{ fontFamily: "var(--font-jakarta)", fontWeight: 500 }}>
+            From 19 interviews: 7 hospitals, 5 staffing agencies, 7 physicians.
+          </p>
           <Shot src="/images/ca-v2-research.jpg"
             alt="Research synthesis: 19 participants across hospitals, staffing agencies and physicians, their quotes, key insights and six themes" />
         </section>
