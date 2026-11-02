@@ -529,7 +529,7 @@ export default function Credentialai() {
           <div className="flex flex-col gap-6">
             <NumberedItem n="01">Ongoing roster monitoring: scheduled license and sanctions rechecks with alerts</NumberedItem>
             <NumberedItem n="02">NCQA-grade verification through a paid partner such as Verisys or CertifyOS</NumberedItem>
-            <NumberedItem n="03">Expand the pilot to more facilities</NumberedItem>
+            <NumberedItem n="03">Build full primary source verification: education and training, board certification (ABMS/AOA), DEA and state controlled-substance registration, NPDB, SAM.gov and state Medicaid exclusions, malpractice history, work-history gaps and peer references.</NumberedItem>
             <NumberedItem n="04">Bulk upload verifications: upload a roster as a CSV, verify every physician in one batch, and download the results with a report for each</NumberedItem>
             <NumberedItem n="05">Facility dashboard: a roster view with each physician&apos;s status at a glance, a license expiration calendar with alerts, and exportable reports for credentialing committees and audits</NumberedItem>
           </div>
