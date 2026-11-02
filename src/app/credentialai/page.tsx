@@ -191,6 +191,15 @@ function DecisionRow({ n, label, title, image, alt, reverse, extra, children }: 
   );
 }
 
+const successDimensions = [
+  { n: "01", title: "Problem validation", question: "Is credentialing a significant operational problem?" },
+  { n: "02", title: "Solution validation", question: "Does AI-powered verification solve it?" },
+  { n: "03", title: "User desirability", question: "Would people adopt and trust it?" },
+  { n: "04", title: "Commercial viability", question: "Would organizations pay for it?" },
+  { n: "05", title: "Operational impact", question: "Does it reduce time, effort, and errors?" },
+  { n: "06", title: "Growth opportunities", question: "What other problems can it solve?" },
+];
+
 const roleRows = [
   { stage: "Research", owned: "Competitive teardown and market scoping, user research, concept validation",
     ai: "Synthesized competitors, funding news and review complaints into a concept brief" },
@@ -332,6 +341,31 @@ export default function Credentialai() {
               </div>
             ))}
           </div>
+        </section>
+
+        {/* Validation Framework & Success */}
+        <section className="w-full max-w-[1200px] flex flex-col gap-10">
+          <SectionLabel>VALIDATION FRAMEWORK &amp; SUCCESS</SectionLabel>
+          <h2 className={h2} style={{ fontFamily: "var(--font-bricolage)" }}>
+            How we define{" "}
+            <span className="gradient-warm">success</span>
+          </h2>
+          <p className={lead} style={{ fontFamily: "var(--font-jakarta)", fontWeight: 500 }}>
+            Six dimensions used to validate Credentialai&apos;s business and user value.
+          </p>
+          <ol className="bg-white border border-[#d4d4d4] rounded-[20px] grid md:grid-cols-2 gap-x-14 px-5 md:px-12 py-2 md:py-4"
+            style={{ boxShadow: "0 0 20px rgba(0,0,0,0.04)" }}>
+            {successDimensions.map((d) => (
+              <li key={d.n} className="flex gap-4 md:gap-6 items-start py-6 md:py-7 border-b border-[#e5e5e5] last:border-b-0 md:[&:nth-last-child(2)]:border-b-0">
+                <span className="text-[#7c5cff] text-xl md:text-2xl shrink-0 w-9 md:w-12 leading-tight"
+                  style={{ fontFamily: "var(--font-jetbrains)", fontWeight: 800 }}>{d.n}</span>
+                <div className="flex flex-col gap-1">
+                  <p className="text-[#010101] text-xl md:text-2xl font-bold leading-tight" style={{ fontFamily: "var(--font-bricolage)" }}>{d.title}</p>
+                  <p className="text-[#6a6a6a] text-lg leading-7" style={{ fontFamily: "var(--font-jakarta)", fontWeight: 500 }}>{d.question}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
         </section>
 
         {/* Research & Discovery */}
