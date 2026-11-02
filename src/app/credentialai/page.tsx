@@ -376,7 +376,7 @@ export default function Credentialai() {
             <span className="gradient-warm">the product, not the lookup</span>
           </h2>
           <div className="flex flex-wrap items-center gap-x-10 gap-y-4">
-            <div className="flex items-baseline gap-4">
+            <div className="flex flex-col items-center gap-2 text-center">
               <span className="text-[55px] font-bold leading-none text-[#2f6fe4]" style={{ fontFamily: "var(--font-bricolage)" }}>19</span>
               <span className="text-[#010101] text-2xl font-bold max-w-[220px] leading-tight" style={{ fontFamily: "var(--font-bricolage)" }}>
                 Healthcare professionals interviewed
@@ -392,9 +392,6 @@ export default function Credentialai() {
             <StatCard value="10 of 12" percent="83%" label="Hospitals & Agencies Want Less Fragmented, More Centralized Workflows" gradient="gradient-warm-reverse" />
             <StatCard value="5 of 7" percent="71%" label="Physicians Say Job Searching Is Too Tedious & Slow" gradient="gradient-cool" />
           </div>
-          <p className="text-[#6b7280] text-base leading-6 -mt-4" style={{ fontFamily: "var(--font-jakarta)", fontWeight: 500 }}>
-            From 19 interviews: 7 hospitals, 5 staffing agencies, 7 physicians.
-          </p>
           <Shot src="/images/ca-v2-research.jpg"
             alt="Research synthesis: 19 participants across hospitals, staffing agencies and physicians, their quotes, key insights and six themes" />
         </section>
