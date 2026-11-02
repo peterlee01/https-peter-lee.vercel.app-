@@ -155,6 +155,15 @@ function Shot({ src, alt, caption }: { src: string; alt: string; caption?: strin
   );
 }
 
+const validationDimensions = [
+  { n: "01", title: "Problem validation", question: "Is credentialing a significant operational problem?", gradient: "gradient-warm" },
+  { n: "02", title: "Solution validation", question: "Does AI-powered verification solve it?", gradient: "gradient-cool" },
+  { n: "03", title: "User desirability", question: "Would people adopt and trust it?", gradient: "gradient-warm-reverse" },
+  { n: "04", title: "Commercial viability", question: "Would organizations pay for it?", gradient: "gradient-warm" },
+  { n: "05", title: "Operational impact", question: "Does it reduce time, effort, and errors?", gradient: "gradient-cool" },
+  { n: "06", title: "Growth opportunities", question: "What other problems can it solve?", gradient: "gradient-warm-reverse" },
+];
+
 const h2 = "text-[clamp(2.5rem,5vw,3.75rem)] font-extrabold leading-[1.15]";
 const lead = "text-[#6a6a6a] text-lg leading-7 max-w-[780px]";
 
@@ -329,6 +338,29 @@ export default function Credentialai() {
                   <span className="md:hidden text-xs tracking-[2px] text-[#7c5cff] block mb-1 mt-2" style={{ fontFamily: "var(--font-jetbrains)", fontWeight: 600 }}>HOW I USED AI</span>
                   {r.ai}
                 </p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Validation Framework & Success Metrics */}
+        <section className="w-full max-w-[1200px] flex flex-col gap-10">
+          <SectionLabel>VALIDATION FRAMEWORK</SectionLabel>
+          <h2 className={h2} style={{ fontFamily: "var(--font-bricolage)" }}>
+            How we{" "}
+            <span className="gradient-warm">define success</span>
+          </h2>
+          <p className={lead} style={{ fontFamily: "var(--font-jakarta)", fontWeight: 500 }}>
+            Six dimensions used to validate Credentialai&apos;s business and user value.
+          </p>
+          <div className="w-full bg-white border border-[#d4d4d4] rounded-[20px] overflow-hidden grid md:grid-cols-2"
+            style={{ boxShadow: "0 0 20px rgba(0,0,0,0.04)" }}>
+            {validationDimensions.map((d, i) => (
+              <div key={d.n}
+                className={`flex flex-col gap-3 p-6 md:p-8 border-[#e5e5e5] ${i < validationDimensions.length - 1 ? "border-b" : ""} ${i === validationDimensions.length - 2 ? "md:border-b-0" : ""} ${i % 2 === 0 ? "md:border-r" : ""}`}>
+                <span className={`text-4xl ${d.gradient}`} style={{ fontFamily: "var(--font-jetbrains)", fontWeight: 800 }}>{d.n}</span>
+                <p className="text-[#010101] text-2xl font-bold pt-2" style={{ fontFamily: "var(--font-bricolage)" }}>{d.title}</p>
+                <p className="text-[#6b7280] text-lg leading-7" style={{ fontFamily: "var(--font-jakarta)", fontWeight: 500 }}>{d.question}</p>
               </div>
             ))}
           </div>
