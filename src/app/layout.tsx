@@ -1,23 +1,24 @@
 import type { Metadata } from "next";
-import { Bricolage_Grotesque, Plus_Jakarta_Sans, JetBrains_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 
-const bricolage = Bricolage_Grotesque({
+// Self-hosted (SIL Open Font License, see ./fonts) so builds don't download from Google Fonts.
+const bricolage = localFont({
+  src: "./fonts/bricolage-grotesque-latin-wght-normal.woff2",
   variable: "--font-bricolage",
-  subsets: ["latin"],
-  weight: ["400", "600", "700", "800"],
+  weight: "200 800",
 });
 
-const jakarta = Plus_Jakarta_Sans({
+const jakarta = localFont({
+  src: "./fonts/plus-jakarta-sans-latin-wght-normal.woff2",
   variable: "--font-jakarta",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: "200 800",
 });
 
-const jetbrains = JetBrains_Mono({
+const jetbrains = localFont({
+  src: "./fonts/jetbrains-mono-latin-wght-normal.woff2",
   variable: "--font-jetbrains",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: "100 800",
 });
 
 export const metadata: Metadata = {
