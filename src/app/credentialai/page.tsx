@@ -388,9 +388,9 @@ export default function Credentialai() {
             </p>
           </div>
           <div className="flex flex-wrap gap-4">
-            <StatCard value="9 of 12" percent="75%" label="Hospitals & Agencies Said Verification Is Too Slow, Losing 8–9 Hours per Physician" gradient="gradient-warm" />
-            <StatCard value="10 of 12" percent="83%" label="Hospitals & Agencies Want Less Fragmented, More Centralized Workflows" gradient="gradient-warm-reverse" />
-            <StatCard value="5 of 7" percent="71%" label="Physicians Say Job Searching Is Too Tedious & Slow" gradient="gradient-cool" />
+            <StatCard value="75%" percent="9 of 12" label="Hospitals & Agencies Said Verification Is Too Slow, Losing 8–9 Hours per Physician" gradient="gradient-warm" />
+            <StatCard value="83%" percent="10 of 12" label="Hospitals & Agencies Want Less Fragmented, More Centralized Workflows" gradient="gradient-warm-reverse" />
+            <StatCard value="71%" percent="5 of 7" label="Physicians Say Job Searching Is Too Tedious & Slow" gradient="gradient-cool" />
           </div>
           <Shot src="/images/ca-v2-research.jpg"
             alt="Research synthesis: 19 participants across hospitals, staffing agencies and physicians, their quotes, key insights and six themes" />
